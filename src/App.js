@@ -24,10 +24,7 @@ function App() {
       src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
     />
  
-
-{/* ReactDOM.render(<ImageDemo />, mountNode);
-    </div>
-  ); */}
+</ div>);
 }
 
 export default App;
