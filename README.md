@@ -1,4 +1,4 @@
-# Crime Rate detector
+# Crime Rate Detector
 
 ## Available Scripts
 
