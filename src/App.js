@@ -7,7 +7,7 @@ import { Image } from 'antd';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { Input } from 'antd';
-
+import MapContainer from './components/MapContainer';
 const { Header, Content, Footer } = Layout;
 const { Search } = Input;
 
@@ -32,6 +32,7 @@ function App() {
           <div className="site-layout-background" style={{ padding: 25, minHeight: 380 }}>
             <div style={{ textAlign: 'center' }}>
               <Search placeholder="Enter Area" theme='dark' onSearch={onSearch} enterButton style={{ marginTop: "70px", width: 200, }} bordered='false' /></div>
+              <MapContainer/>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Design ©2021 Created by Team B</Footer>
