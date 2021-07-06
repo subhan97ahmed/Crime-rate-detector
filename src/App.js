@@ -33,8 +33,11 @@ function App() {
           <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
           <div className="site-layout-background"  style={{ padding: "24px", minHeight: "780px",}}>
             <div style={{ textAlign: 'center' }}>
-              {/* <Typography><Title>Introduction</Title><Paragraph>Enter Area to find Crime Rate</Paragraph></Typography> */}
-              <Search placeholder="Enter Area" theme='light' onSearch={onSearch} enterButton style={{ marginTop: "70px", width: "200px", }} />
+              <Title style={{color:"#6aceef"}}>Crime Rate Detector</Title>
+              <div style={{position: 'absolute', left: '30%', top: '25%',}}>
+              <p style={{float:"left", color:"#6aceef",marginTop:"5px"}}> Enter Area to find Crime Rate</p>
+              <Search  placeholder="Enter Area" theme='light' onSearch={onSearch} enterButton style={{ marginLeft:"5px",width: "200px", backgroundColor:"greenyellow", float:"left"}} />
+              </div>
             </div>
             <div style={{
               position: 'absolute', left: '50%', top: '60%',
@@ -44,7 +47,7 @@ function App() {
             </div>
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Design ©2021 Created by Team B</Footer>
+        <Footer style={{ textAlign: 'center',backgroundColor:"#2E2A2B",color:"white" }}>Design ©2021 Created by Team B</Footer>
       </Layout>
     </ div>);
 }
