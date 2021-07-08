@@ -16,7 +16,7 @@ const footerTxtColor = conColors.footerTxtColor
 function AboutUs() {
     return (
         <>
-            <Layout>
+            <Layout className="aboutus">
                 <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
                     <div className="logo" style={{ overflow: 'hidden' }}>
                         <Image src={log1} height={100} width={100} style={{ marginTop: "-20px" }} preview={false} ></Image>
@@ -24,7 +24,7 @@ function AboutUs() {
                     <NavBar selectedOp='3' />
                 </Header>
                 <Content className="site-layout" style={{ padding: '0 50px', marginTop: "64px", backgroundImage: `url(${bg})`, backgroundAttachment: "scroll" }}>
-                    <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
+                    <div style={{ margin: '16px 0' }}></div>
                     <div className="site-layout-background" style={{ padding: "24px", minHeight: "780px", }}>
                         <div style={{ textAlign: 'center' }}>
                             <Title style={{ color: txtColor }}>About Us</Title>

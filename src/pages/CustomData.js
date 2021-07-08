@@ -2,7 +2,7 @@ import log1 from '../logo1.png'
 import "../App.less"
 import { Image } from 'antd';
 import bg from '../bg.jpg'
-import { Layout, Breadcrumb } from 'antd';
+import { Layout,} from 'antd';
 import { Typography } from 'antd';
 import { Table } from 'antd';
 import NavBar from '../components/NavBar';
@@ -79,7 +79,7 @@ const footerTxtColor = conColors.footerTxtColor
 function CustomData() {
     return (
         <>
-            <Layout>
+            <Layout className="customdata">
                 <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
                     <div className="logo" style={{ overflow: 'hidden' }}>
                         <Image src={log1} height={100} width={100} style={{ marginTop: "-20px" }} preview={false} ></Image>
@@ -87,7 +87,7 @@ function CustomData() {
                     <NavBar selectedOp='2' />
                 </Header>
                 <Content className="site-layout" style={{ padding: '0 50px', marginTop: "64px", backgroundImage: `url(${bg})`, backgroundAttachment: "scroll" }}>
-                    <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
+                    <div style={{ margin: '16px 0' }}></div>
                     <div className="site-layout-background" style={{ padding: "24px", minHeight: "780px", }}>
                         <div style={{ textAlign: 'center' }}>
                             <Title style={{ color: txtColor }}>Custom Data</Title>
