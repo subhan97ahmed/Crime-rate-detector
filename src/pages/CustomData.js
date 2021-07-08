@@ -1,13 +1,33 @@
 import "../App.less"
 import bg from '../bg.jpg'
-import { Layout,Typography,Table} from 'antd';
+import { Layout, Typography, Table } from 'antd';
 import NavBar from '../components/NavBar';
 import NavLogo from '../components/NavLogo'
 import * as conColors from '../colors'
+
+import { Upload, message, Button } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
+
 const { Title } = Typography;
 const { Header, Content, Footer } = Layout;
 
-
+const props = {
+    name: 'file',
+    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    headers: {
+        authorization: 'authorization-text',
+    },
+    onChange(info) {
+        if (info.file.status !== 'uploading') {
+            console.log(info.file, info.fileList);
+        }
+        if (info.file.status === 'done') {
+            message.success(`${info.file.name} file uploaded successfully`);
+        } else if (info.file.status === 'error') {
+            message.error(`${info.file.name} file upload failed.`);
+        }
+    },
+};
 // demo data
 const dataSource = [
     {
@@ -18,7 +38,7 @@ const dataSource = [
         noOfIncident: '70',
         date: '12-12-20'
     },
-     {
+    {
         key: '2',
         area: 'Saddar town',
         crimeType: 'Murder',
@@ -92,6 +112,10 @@ function CustomData() {
                             transform: 'translate(-50%, -50%)', height: '40%', width: '70%',
                         }}>
                             <Table dataSource={dataSource} columns={columns} />
+
+                            <Upload {...props}>
+                                <Button style={{color:"black"}}  icon={<UploadOutlined />}>Click to Upload CSV</Button>
+                            </Upload>,
                         </div>
                     </div>
                 </Content>
