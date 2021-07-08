@@ -32,7 +32,7 @@ function AboutUs() {
                             position: 'absolute', left: '50%', top: '50%',
                             transform: 'translate(-50%, -50%)', height: '40%', width: '70%',
                         }}>
-                            {/*TODO: have to add about us info */}
+                            {/*TODO: have to add about us information */}
                         </div>
                     </div>
                 </Content>
