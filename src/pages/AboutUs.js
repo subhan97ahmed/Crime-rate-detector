@@ -33,6 +33,26 @@ function AboutUs() {
                             transform: 'translate(-50%, -50%)', height: '40%', width: '70%',
                         }}>
                             {/*TODO: have to add about us information */}
+                            <section>
+  <div class="log_img">
+    <br> <br><br>
+    <div class="box1">
+        <h1 style="text-align: center; font-size: 35px;font-family: Lucida Console;">
+        Mentors Name</h1>
+        <h1 style="text-align: center;font-size: 20px;">Sameer Ahmed Siddiqui</h1>
+        <h1 style="text-align: center;font-size: 20px;">Ovais Ashraf</h1>
+        <h1 style="text-align: center; font-size: 35px;font-family: Lucida Console;">
+        Team B Members</h1>
+        <h1 style="text-align: center;font-size: 20px;">Subhan Ahmed</h1>
+        <h1 style="text-align: center;font-size: 15px;">subhan97ahmed@gmail.com</h1>
+        <h1 style="text-align: center;font-size: 20px;">Fiza Ahmed</h1>
+        <h1 style="text-align: center;font-size: 15px;">fiza.1601260@gmail.com</h1>
+        <h1 style="text-align: center;font-size: 20px;">Qaseem</h1>
+        <h1 style="text-align: center;font-size: 15px;">qaseemsamdani2000@gmail.com</h1>
+       </div>
+        
+  </div>
+</section>
                         </div>
                     </div>
                 </Content>
