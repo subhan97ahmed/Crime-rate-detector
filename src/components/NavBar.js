@@ -1,7 +1,7 @@
 import '../App.less';
 import { Menu } from 'antd';
-function NavBar(selectedOp) {
-    
+function NavBar(props) {
+
     const onClickNav=(key) => {
         if (key == 1) {
           window.location.replace("/");
@@ -17,13 +17,13 @@ function NavBar(selectedOp) {
       }
       
     return(
-        <div>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[selectedOp]}  >
+        <>
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[props.selectedOp]}   >
             <Menu.Item key="1" onClick={()=> onClickNav(1)}>Home</Menu.Item>
             <Menu.Item key="2" onClick={()=> onClickNav(2)}>Custom Data</Menu.Item>
             <Menu.Item key="3" onClick={()=> onClickNav(3)}>About</Menu.Item>
           </Menu>
-        </div>
+        </>
     );
 }
 export default NavBar;

@@ -128,13 +128,13 @@ const columns = [
 
 function CustomData() {
     return (
-        <div>
+        <>
             <Layout>
                 <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
                     <div className="logo" style={{ overflow: 'hidden' }}>
                         <Image src={log1} height={100} width={100} style={{ marginTop: "-20px" }} preview={false} ></Image>
                     </div>
-                    <NavBar selectedOp={'2'}/>
+                    <NavBar selectedOp='2'/>
                 </Header>
                 <Content className="site-layout" style={{ padding: '0 50px', marginTop: "64px", backgroundImage: `url(${bg})`, backgroundAttachment: "scroll" }}>
                     <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
@@ -152,7 +152,7 @@ function CustomData() {
                 </Content>
                 <Footer style={{ textAlign: 'center', backgroundColor: "#2E2A2B", color: "white" }}>Design ©2021 Created by Team B</Footer>
             </Layout>
-        </div>
+        </>
     );
 }
 
