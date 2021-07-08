@@ -7,6 +7,12 @@ const mapStyles = {
   overflow:'hidden',
 };
 
+const isl=[
+  {
+  lat:33.6844,
+  lng:73.0479
+  },
+];
 export class MapContainer extends Component {
   render() {
     return (
@@ -15,12 +21,19 @@ export class MapContainer extends Component {
           google={this.props.google}
           zoom={14}
           style={mapStyles}
-          initialCenter=
-          {
+          // initialCenter=
+          // {
+          //   {
+          //     lat: 24.860966,
+          //     lng: 66.990501
+          //   }
+          // }
+          initialCenter={
             {
-              lat: 24.860966,
-              lng: 66.990501
+              lat:33.6844,
+              lng:73.0479
             }
+            
           }
         />
       </div>
