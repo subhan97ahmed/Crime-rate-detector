@@ -1,8 +1,8 @@
-import log1 from '../logo1.png'
 import "../App.less"
 import bg from '../bg.jpg'
-import { Layout, Typography,Image} from 'antd';
+import { Layout, Typography} from 'antd';
 import NavBar from '../components/NavBar';
+import NavLogo from '../components/NavLogo'
 //colors
 import * as conColors from '../colors'
 const { Title } = Typography;
@@ -16,9 +16,7 @@ function AboutUs() {
         <>
             <Layout className="aboutus">
                 <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-                    <div className="logo" style={{ overflow: 'hidden' }}>
-                        <Image src={log1} height={100} width={100} style={{ marginTop: "-20px" }} preview={false} ></Image>
-                    </div>
+                    <NavLogo></NavLogo>
                     <NavBar selectedOp='3' />
                 </Header>
                 <Content className="site-layout" style={{ padding: '0 50px', marginTop: "64px", backgroundImage: `url(${bg})`, backgroundAttachment: "scroll" }}>
