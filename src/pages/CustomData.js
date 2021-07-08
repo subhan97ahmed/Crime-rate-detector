@@ -1,10 +1,7 @@
 import log1 from '../logo1.png'
 import "../App.less"
-import { Image } from 'antd';
 import bg from '../bg.jpg'
-import { Layout,} from 'antd';
-import { Typography } from 'antd';
-import { Table } from 'antd';
+import { Layout,Typography,Table, Image} from 'antd';
 import NavBar from '../components/NavBar';
 import * as conColors from '../colors'
 const { Title } = Typography;

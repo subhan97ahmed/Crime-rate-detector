@@ -1,9 +1,7 @@
 import log1 from '../logo1.png'
 import "../App.less"
-import { Image } from 'antd';
 import bg from '../bg.jpg'
-import { Layout, Breadcrumb } from 'antd';
-import { Typography } from 'antd';
+import { Layout, Typography,Image} from 'antd';
 import NavBar from '../components/NavBar';
 //colors
 import * as conColors from '../colors'

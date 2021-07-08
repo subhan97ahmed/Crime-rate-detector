@@ -1,11 +1,8 @@
 import log1 from './logo1.png'
 import './App.less';
-import { Image } from 'antd';
 import bg from './bg.jpg'
-import { Layout, Breadcrumb } from 'antd';
-import { Input } from 'antd';
+import { Layout,Input, Typography, Image} from 'antd';
 import MapContainer from './components/MapContainer';
-import { Typography } from 'antd';
 import NavBar from './components/NavBar';
 
 import * as conColors from './colors'
