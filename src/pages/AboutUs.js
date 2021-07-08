@@ -5,13 +5,14 @@ import bg from '../bg.jpg'
 import { Layout, Breadcrumb } from 'antd';
 import { Typography } from 'antd';
 import NavBar from '../components/NavBar';
-
+//colors
+import * as conColors from '../colors'
 const { Title } = Typography;
 const { Header, Content, Footer } = Layout;
 
-const txtColor = "#6aceef"
-const footerBgColor ="#2E2A2B"
-const footerTxtColor = "#FFFFFF"
+const txtColor = conColors.txtColor
+const footerBgColor = conColors.footerBgColor
+const footerTxtColor = conColors.footerTxtColor
 function AboutUs() {
     return (
         <>

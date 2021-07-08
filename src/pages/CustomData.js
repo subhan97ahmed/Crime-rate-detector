@@ -6,7 +6,7 @@ import { Layout, Breadcrumb } from 'antd';
 import { Typography } from 'antd';
 import { Table } from 'antd';
 import NavBar from '../components/NavBar';
-
+import * as conColors from '../colors'
 const { Title } = Typography;
 const { Header, Content, Footer } = Layout;
 
@@ -21,74 +21,22 @@ const dataSource = [
         noOfIncident: '70',
         date: '12-12-20'
     },
-    {
-        key: '1',
-        area: 'Saddar town',
-        crimeType: 'Murder',
-        location: '25.123, 23.034',
-        noOfIncident: '70',
-        date: '12-12-20'
-    },
-    {
-        key: '1',
-        area: 'Saddar town',
-        crimeType: 'Murder',
-        location: '25.123, 23.034',
-        noOfIncident: '70',
-        date: '12-12-20'
-    },
-    {
-        key: '1',
-        area: 'Saddar town',
-        crimeType: 'Murder',
-        location: '25.123, 23.034',
-        noOfIncident: '70',
-        date: '12-12-20'
-    },
-    {
-        key: '1',
+     {
+        key: '2',
         area: 'Saddar town',
         crimeType: 'Murder',
         location: '25.123, 23.034',
         noOfIncident: '70',
         date: '12-12-20'
     }, {
-        key: '1',
+        key: '3',
         area: 'Saddar town',
         crimeType: 'Murder',
         location: '25.123, 23.034',
         noOfIncident: '70',
         date: '12-12-20'
     }, {
-        key: '1',
-        area: 'Saddar town',
-        crimeType: 'Murder',
-        location: '25.123, 23.034',
-        noOfIncident: '70',
-        date: '12-12-20'
-    }, {
-        key: '1',
-        area: 'Saddar town',
-        crimeType: 'Murder',
-        location: '25.123, 23.034',
-        noOfIncident: '70',
-        date: '12-12-20'
-    }, {
-        key: '1',
-        area: 'Saddar town',
-        crimeType: 'Murder',
-        location: '25.123, 23.034',
-        noOfIncident: '70',
-        date: '12-12-20'
-    }, {
-        key: '1',
-        area: 'Saddar town',
-        crimeType: 'Murder',
-        location: '25.123, 23.034',
-        noOfIncident: '70',
-        date: '12-12-20'
-    }, {
-        key: '1',
+        key: '4',
         area: 'Saddar town',
         crimeType: 'Murder',
         location: '25.123, 23.034',
@@ -125,9 +73,9 @@ const columns = [
     },
 ];
 
-const txtColor = "#6aceef"
-const footerBgColor = "#2E2A2B"
-const footerTxtColor = "#FFFFFF"
+const txtColor = conColors.txtColor
+const footerBgColor = conColors.footerBgColor
+const footerTxtColor = conColors.footerTxtColor
 function CustomData() {
     return (
         <>
