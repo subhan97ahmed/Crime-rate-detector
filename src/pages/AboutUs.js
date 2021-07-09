@@ -1,12 +1,13 @@
 import "../App.less"
 import bg from '../bg.jpg'
-import { Layout, Typography} from 'antd';
+import { Layout, Typography } from 'antd';
 import NavBar from '../components/NavBar';
 import NavLogo from '../components/NavLogo'
 //colors
 import * as conColors from '../colors'
 const { Title } = Typography;
 const { Header, Content, Footer } = Layout;
+
 
 const txtColor = conColors.txtColor
 const footerBgColor = conColors.footerBgColor
@@ -29,7 +30,29 @@ function AboutUs() {
                             position: 'absolute', left: '50%', top: '50%',
                             transform: 'translate(-50%, -50%)', height: '40%', width: '70%',
                         }}>
-                            {/*TODO: have to add about us info */}
+                            <section>
+                                <div className="log_img" >
+                                    <div className="box1" style={{color:txtColor }}>
+                                        <h1 style={{ textAlign: "center", fontSize: "35px" }}>
+                                            Mentors Name</h1>
+                                        <h1 style={{ textAlign: " center", fontSize: "25px" }}>Sameer Ahmed Siddiqui</h1>
+                                        <h1 style={{ textAlign: "center", fontSize: "25px" }}>Ovais Ashraf</h1>
+                                        <h1 style={{ textAlign: "center", fontSize: "35px" }}>
+                                            Team B Members</h1>
+                                            {/* <h1 style={{ textAlign: "center", fontSize: "25px",wordSpacing:"100px" }}>Name Email</h1> */}
+                                            <h1 style={{ textAlign: "center", fontSize: "25px",wordSpacing:"25px" }}>Areej  areej.zahid.023@gmail.com</h1>
+                                        <h1 style={{ textAlign: "center", fontSize: "25px",wordSpacing:"25px" }}>Fiza fiza.1601260@gmail.com</h1>
+                                        <h1 style={{ textAlign: "center", fontSize: "25px",wordSpacing:"25px" }}>Owais  Muhammadowaischandio@gmail.com</h1>
+                                        <h1 style={{ textAlign: "center", fontSize: "25px",wordSpacing:"25px" }}>Qaseem  qaseemsamdani2000@gmail.com</h1>
+                                        <h1 style={{ textAlign: "center", fontSize: "25px",wordSpacing:"25px" }}>Subhan  subhan97ahmed@gmail.com</h1>
+                                        
+                                        
+                                    
+                                        <h1 style={{ textAlign: "center", fontSize: "35px" }}></h1>
+                                    </div>
+
+                                </div>
+                            </section>
                         </div>
                     </div>
                 </Content>
