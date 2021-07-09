@@ -3,14 +3,14 @@ import { Menu } from 'antd';
 function NavBar(props) {
 
     const onClickNav=(key) => {
-        if (key == 1) {
+        if (key === 1) {
           window.location.replace("/");
         }
-        else if (key == 2) {
+        else if (key === 2) {
             // selectedOp=2
           window.location.replace("/customdata")
         }
-        else if (key == 3) {
+        else if (key === 3) {
             // selectedOp=3
             window.location.replace("/about")
         }
