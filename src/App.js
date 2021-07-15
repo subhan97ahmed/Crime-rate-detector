@@ -6,6 +6,7 @@ import NavBar from './components/NavBar';
 import NavLogo from './components/NavLogo';
 import * as conColors from './colors'
 
+import React, { useEffect, useState } from "react";
 const { Title } = Typography;
 const { Header, Content, Footer } = Layout;
 const { Search } = Input;
@@ -13,8 +14,16 @@ const { Search } = Input;
 const txtColor = conColors.txtColor
 const footerBgColor = conColors.footerBgColor
 const footerTxtColor = conColors.footerTxtColor
+
+// let searched=''
 function App() {
-  const onSearch = value => console.log(value);
+ 
+const [searchedCity, setsearchedCity] = useState()
+  const onSearch = (value) => {
+    // if(value!==searched){
+      setsearchedCity(value)
+    // } 
+};
 
   return (
     <div className="App">
@@ -36,7 +45,7 @@ function App() {
               position: 'absolute', left: '50%', top: '60%',
               transform: 'translate(-50%, -50%)', height: '50%', width: '70%', overflow: 'hidden'
             }}>
-              <MapContainer />
+              <MapContainer searchedCity={searchedCity} />
             </div>
           </div>
         </Content>
