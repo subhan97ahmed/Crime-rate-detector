@@ -11,7 +11,6 @@ const mapStyles = {
 var points = ''
 export class MapContainer extends Component {
 
-
   constructor(props) {
     // demo data
     points = [
@@ -52,42 +51,26 @@ export class MapContainer extends Component {
       lat: 24.860966,
       lng: 66.990501
     };
-    // if(this.props.searchedCity==='1'){
-
-    // setloc(points[0]) 
-    // this.intialcent.lng = points[0].lng
-
-    // }
   }
-
-  // componentDidMount(){
-  //   const map = this.map;
-  //   const current = this.state;
-  //   const google = this.props.google;
-  //   const maps = google.maps;
-
-  //   if (map) {
-  //     let center = new maps.LatLng(current.lat, current.lng);
-  //     map.panTo(center);
-  //   }
-  // }
-
   render() {
+    const zoomno = 15
     // console.log(this.state) 
     var bounds = new this.props.google.maps.LatLngBounds();
     for (var i = 0; i < points.length; i++) {
-      bounds.extend(points[0]);
+      if (this.props.searchedCity === points[i].name) {
+        bounds.extend(points[i]);
+        this.state = points[i]
+      }
     }
     return (
       // console.log(this.state)
       <div>
         <Map
           google={this.props.google}
-          zoom={16}
+          zoom={zoomno}
           style={mapStyles}
           initialCenter=
           {
-
             this.state
           }
           bounds={bounds}

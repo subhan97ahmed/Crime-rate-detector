@@ -18,7 +18,7 @@ const footerTxtColor = conColors.footerTxtColor
 // let searched=''
 function App() {
  
-const [searchedCity, setsearchedCity] = useState()
+const [searchedCity, setsearchedCity] = useState('')
   const onSearch = (value) => {
     // if(value!==searched){
       setsearchedCity(value)
