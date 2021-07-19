@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker,Circle } from 'google-maps-react';
+import React, { Component, useState } from 'react';
+import { Map, GoogleApiWrapper, Marker, Circle } from 'google-maps-react';
 import { Spin } from 'antd';
 
 const mapStyles = {
@@ -8,15 +8,9 @@ const mapStyles = {
   overflow: 'hidden',
 };
 
-
-var points=''
-var intialcent = {
-  lat: 24.860966,
-  lng: 66.990501
-}
+var points = ''
 export class MapContainer extends Component {
 
-  
   constructor(props) {
     // demo data
     points = [
@@ -50,38 +44,36 @@ export class MapContainer extends Component {
         , lng: 67.1871
       }
     ]
-    
+
     super(props);
     console.log(this.props.searchedCity);
-
-    // if(this.props.searchedCity==='1'){
-      console.log(points[0].lat)
-      intialcent.lat = points[0].lat
-      intialcent.lng = points[0].lng
-      
-    // }
+    this.state = {
+      lat: 24.860966,
+      lng: 66.990501
+    };
   }
-
   render() {
-    
+    const zoomno = 15
+    // console.log(this.state) 
     var bounds = new this.props.google.maps.LatLngBounds();
     for (var i = 0; i < points.length; i++) {
-      bounds.extend(points[i]);
+      if (this.props.searchedCity === points[i].name) {
+        bounds.extend(points[i]);
+        this.state = points[i]
+      }
     }
-    console.log(this.props.searchedCity);
     return (
+      // console.log(this.state)
       <div>
         <Map
           google={this.props.google}
-          zoom={12}
+          zoom={zoomno}
           style={mapStyles}
           initialCenter=
           {
-            {lat:
-              intialcent.lat,lng:intialcent.lng}
+            this.state
           }
-           bounds={bounds}
-
+          bounds={bounds}
 
         >
           {points.map((point) =>
@@ -90,21 +82,20 @@ export class MapContainer extends Component {
             //   title={point.name}
             //   name={point.name}
             //   position={{ lat: point.lat, lng: point.lng }} >
-              
             // </Marker> */}
             <Circle
-            radius={1200}
-            center={{lat:point.lat,lng:point.lng}}
-            onMouseover={() => console.log('mouseover')}
-            onClick={() => console.log('click')}
-            onMouseout={() => console.log('mouseout')}
-            strokeColor='transparent'
-            strokeOpacity={0}
-            strokeWeight={5}
-            fillColor='#FF0000'
-            fillOpacity={0.2}
-          />
-          // </div>
+              radius={1000}
+              center={{ lat: point.lat, lng: point.lng }}
+              onMouseover={() => console.log('mouseover')}
+              onClick={() => console.log('click')}
+              onMouseout={() => console.log('mouseout')}
+              strokeColor='transparent'
+              strokeOpacity={0}
+              strokeWeight={5}
+              fillColor='#FF0000'
+              fillOpacity={0.2}
+            />
+            // </div>
           )}
         </Map>
       </div>
