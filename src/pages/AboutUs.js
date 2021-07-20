@@ -8,6 +8,15 @@ import { Card } from "antd";
 //colors
 import * as conColors from "../colors";
 import { Col, Row } from "antd";
+
+// images import
+import oimg from '../pictures/o.jpeg'
+import fimg from '../pictures/f.PNG'
+import qimg from '../pictures/q.PNG'
+import simg from '../pictures/s.PNG'
+import aimg from '../pictures/a.PNG'
+
+
 const { Title } = Typography;
 const { Header, Content, Footer } = Layout;
 
@@ -15,8 +24,16 @@ const txtColor = conColors.txtColor;
 const footerBgColor = conColors.footerBgColor;
 const footerTxtColor = conColors.footerTxtColor;
 const cardcolor = conColors.cardcolor;
+
+const cardStyle = {
+  textAlign: 'center',
+  fontSize: "20px",
+  color: txtColor,
+  backgroundColor: footerBgColor,
+};
 function AboutUs() {
   return (
+
     <>
       <Layout className="aboutus">
         <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
@@ -29,212 +46,155 @@ function AboutUs() {
             padding: "0 50px",
             marginTop: "64px",
             backgroundImage: `url(${bg})`,
-            backgroundAttachment: "scroll",
+            backgroundSize: 'cover'
           }}
         >
           <div style={{ margin: "16px 0" }}></div>
           <div
             className="site-layout-background"
-            style={{ padding: "24px", minHeight: "1300px" }}
+            style={{ padding: "24px" }}
           >
             <div style={{ textAlign: "center" }}>
               <Title style={{ color: txtColor }}>About Us</Title>
             </div>
             <div
-              style={{
-                position: "absolute",
-                left: "50%",
-                top: "50%",
-                transform: "translate(-50%, -50%)",
-                height: "40%",
-                width: "70%",
-              }}
             >
-              <section>
-                <div className="site-card-border-less-wrapper">
-                  <Card
-                    title="Crime rate detector"
-                    bordered={true}
-                    headStyle={{ fontSize: "35px", color: "#6DDAF2" }}
+              <div className="site-card-border-less-wrapper">
+                <Card
+                  title="Crime Rate detector"
+                  bordered={true}
+                  headStyle={{ fontSize: "21px", color: txtColor }}
+                  style={{
+                    width: "100%",
+                    textAlign: "center",
+                    backgroundColor: footerBgColor,
+                  }}
+                >
+                  <p
                     style={{
                       textAlign: "center",
-                      position: "absolute",
-                      left: "50%",
-                      top: "60%",
-                      transform: "translate(-50%, -50%)",
-                      height: "130%",
-                      width: "100%",
-                      overflow: "hidden",
-                      backgroundColor: footerBgColor,
+                      color: txtColor,
                     }}
                   >
-                    <p
-                      style={{
-                        textAlign: "center",
-                        fontSize: "20px",
-                        color: "#6DDAF2",
+                    This is one of the interesting computer science project
+                    ideas to create. As the name suggests, this Computer
+                    Science project involves building a prediction system that
+                    can analyze and predict the crime rate of a particular
+                    location. Naturally, the system needs to be fed with
+                    relevant data. It uses the MLPClassifer algorithm which
+                    stands for Multilayer perceptron to predict the crime
+                    rate. We will use The K-means algorithm for clustering
+                    co-offenders and organized crime groups by detecting
+                    relevant crime patterns via hidden links, link prediction,
+                    and statistical analysis of crime data.
+                  </p>
+                </Card>
+              </div>
+              <div style={{ textAlign: 'center', marginTop: "20px" }}>
+                <Title style={{ color: txtColor }}>Mentors</Title>
+              </div>
+              <div className="site-card-wrapper" >
+                <Row gutter={[10, 10]} justify='center'>
+                  <Col xs={24} lg={4}>
+                    <Card
+                      title="Sameer Ahmed Siddqui"
+                      bordered={true}
+                      headStyle={{
+                        color: txtColor,
+                        backgroundColor: footerBgColor,
                       }}
+                      style={cardStyle}
                     >
-                      This is one of the interesting computer science project
-                      ideas to create. As the name suggests, this Computer
-                      Science project involves building a prediction system that
-                      can analyze and predict the crime rate of a particular
-                      location. Naturally, the system needs to be fed with
-                      relevant data. It uses the K-means data mining algorithm
-                      to predict the crime rate. The K-means algorithm can
-                      cluster co-offenders and organized crime groups by
-                      detecting relevant crime patterns via hidden links, link
-                      prediction, and statistical analysis of crime data.
-                    </p>
-                  </Card>
-                </div>
-                <div className="site-card-wrapper">
-                  <Row gutter={16}>
-                    <Col span={11}>
-                      <Card
-                        title="Mentor"
-                        bordered={true}
-                        headStyle={{
-                          fontSize: "25px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                        }}
-                        style={{
-                          textAlign: "center",
-                          fontSize: "20px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                        }}
-                      >
-                        Sameer Ahmed Siddqui
-                      </Card>
-                    </Col>
-                    <Col span={11}>
-                      <Card
-                        title="Mentor"
-                        bordered={true}
-                        headStyle={{
-                          fontSize: "25px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                        }}
-                        style={{
-                          textAlign: "center",
-                          fontSize: "20px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                        }}
-                      >
-                        Ovais Ashraf
-                      </Card>
-                    </Col>
-                  </Row>
-                </div>
-                ,
-                <div className="teamb">
-                 <Row gutter={15}>
-                    <Col span={5}>
-                      <Card
-                        title="Team B"
-                        bordered={true}
-                        headStyle={{
-                          fontSize: "25px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                        }}
-                        style={{
-                          textAlign: "center",
-                          fontSize: "20px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                        }}
-                      >
-                        Qaseem Samdani
-                      </Card>
-                    </Col>
-                    <Col span={5}>
-                      <Card
-                        title="Team B"
-                        bordered={true}
-                        headStyle={{
-                          fontSize: "25px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                        }}
-                        style={{
-                          textAlign: "center",
-                          fontSize: "20px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                        }}
-                      >
-                        Subhan Ahmed
-                      </Card>
-                    </Col>
-                    <Col span={5}>
-                      <Card
-                        title="Team B"
-                        bordered={true}
-                        headStyle={{
-                          fontSize: "25px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                        }}
-                        style={{
-                          textAlign: "center",
-                          fontSize: "20px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                        }}
-                      >
-                        Fizza Ahmed
-                      </Card>
-                    </Col>
-
-                    <Col span={5}>
-                      <Card
-                        title="Team B "
-                        bordered={true}
-                        headStyle={{
-                          fontSize: "25px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                        }}
-                        style={{
-                          textAlign: "center",
-                          fontSize: "20px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                        }}
-                      >
-                        Areej Zahid
-                      </Card>
-                    </Col>
-                    
-                    <Col span={5}>
-                      <Card
-                        title="Team B"
-                        bordered={true}
-                        headStyle={{
-                          fontSize: "25px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                        }}
-                        style={{
-                          textAlign: "center",
-                          fontSize: "20px",
-                          color: "#6DDAF2",
-                          backgroundColor: footerBgColor,
-                          marginTop: '60px',
-                        }}
-                      >
-                       Owais
-                      </Card>
-                    </Col>
-                    </Row>
-                  </div>
-                ,
-              </section>
+                      <Image src={log1} />
+                    </Card>
+                  </Col>
+                  <Col xs={24} lg={4}>
+                    <Card
+                      title="Ovais Ashraf"
+                      bordered={true}
+                      headStyle={{
+                        color: txtColor,
+                        backgroundColor: footerBgColor,
+                      }}
+                      style={cardStyle}
+                    >
+                      <Image src={log1} />
+                    </Card>
+                  </Col>
+                </Row>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <Title style={{ color: txtColor, marginTop: "20px" }}>Team B</Title>
+              </div>
+              <div className="teamb">
+                <Row gutter={[10, 20]} justify='space-between'>
+                  <Col xs={24} lg={4}>
+                    <Card
+                      title="Qaseem Samdani"
+                      bordered={true}
+                      headStyle={{
+                        color: txtColor,
+                        backgroundColor: footerBgColor,
+                      }}
+                      style={cardStyle}
+                    >
+                      <Image src={qimg} />
+                    </Card>
+                  </Col>
+                  <Col xs={24} lg={4}>
+                    <Card
+                      title="Subhan Ahmed"
+                      bordered={true}
+                      headStyle={{
+                        color: txtColor,
+                        backgroundColor: footerBgColor,
+                      }}
+                      style={cardStyle}
+                    >
+                      <Image src={simg} />
+                    </Card>
+                  </Col>
+                  <Col xs={24} lg={4}>
+                    <Card
+                      title="Fizza Ahmed"
+                      bordered={true}
+                      headStyle={{
+                        color: txtColor,
+                        backgroundColor: footerBgColor,
+                      }}
+                      style={cardStyle}
+                    >
+                      <Image src={fimg} />
+                    </Card>
+                  </Col>
+                  <Col xs={24} lg={4}>
+                    <Card
+                      title="Areej Zahid"
+                      bordered={true}
+                      headStyle={{
+                        color: txtColor,
+                        backgroundColor: footerBgColor,
+                      }}
+                      style={cardStyle}
+                    >
+                      <Image src={aimg} />
+                    </Card>
+                  </Col>
+                  <Col xs={24} lg={4}>
+                    <Card
+                      title="Owais"
+                      bordered={true}
+                      headStyle={{
+                        color: txtColor,
+                        backgroundColor: footerBgColor,
+                      }}
+                      style={cardStyle}
+                    >
+                      <Image src={oimg} />
+                    </Card>
+                  </Col>
+                </Row>
+              </div>
             </div>
           </div>
         </Content>

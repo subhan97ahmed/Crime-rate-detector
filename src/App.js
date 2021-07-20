@@ -18,8 +18,8 @@ const cardcolor = conColors.cardcolor;
 
 // let searched=''
 function App() {
- 
-const [searchedCity, setsearchedCity] = useState('')
+
+  const [searchedCity, setsearchedCity] = useState('')
   const onSearch = (value) => {
     // if(value!==searched){
     setsearchedCity(value);
@@ -39,7 +39,7 @@ const [searchedCity, setsearchedCity] = useState('')
             padding: "0 50px",
             marginTop: "64px",
             backgroundImage: `url(${bg})`,
-            backgroundAttachment: "scroll",
+            backgroundSize: 'cover'
           }}
         >
           <div style={{ margin: "16px 0" }}></div>

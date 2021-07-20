@@ -101,7 +101,11 @@ function CustomData() {
                     <NavLogo></NavLogo>
                     <NavBar selectedOp='2' />
                 </Header>
-                <Content className="site-layout" style={{ padding: '0 50px', marginTop: "64px", backgroundImage: `url(${bg})`, backgroundAttachment: "scroll" }}>
+                <Content className="site-layout" style={{
+                    padding: '0 50px', marginTop: "64px",
+                    backgroundImage: `url(${bg})`,
+                    backgroundSize: 'cover'
+                }}>
                     <div style={{ margin: '16px 0' }}></div>
                     <div className="site-layout-background" style={{ padding: "24px", minHeight: "780px", }}>
                         <div style={{ textAlign: 'center' }}>
@@ -114,7 +118,7 @@ function CustomData() {
                             <Table dataSource={dataSource} columns={columns} />
 
                             <Upload {...props}>
-                                <Button style={{color:"black"}}  icon={<UploadOutlined />}>Click to Upload CSV</Button>
+                                <Button style={{ color: "black" }} icon={<UploadOutlined />}>Click to Upload CSV</Button>
                             </Upload>,
                         </div>
                     </div>
