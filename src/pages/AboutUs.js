@@ -15,6 +15,9 @@ import fimg from '../pictures/f.PNG'
 import qimg from '../pictures/q.PNG'
 import simg from '../pictures/s.PNG'
 import aimg from '../pictures/a.PNG'
+import msimg from '../pictures/ms.PNG'
+import moimg from '../pictures/mo.PNG'
+
 
 
 const { Title } = Typography;
@@ -105,7 +108,7 @@ function AboutUs() {
                       }}
                       style={cardStyle}
                     >
-                      <Image src={log1} />
+                      <Image src={msimg} />
                     </Card>
                   </Col>
                   <Col xs={24} lg={4}>
@@ -118,7 +121,7 @@ function AboutUs() {
                       }}
                       style={cardStyle}
                     >
-                      <Image src={log1} />
+                      <Image src={moimg} />
                     </Card>
                   </Col>
                 </Row>
