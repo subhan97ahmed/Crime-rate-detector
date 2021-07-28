@@ -1,12 +1,12 @@
-import "./App.less";
-import bg from "./bg.jpg";
-import { Layout, Input, Typography } from "antd";
+import React, { useState } from "react";
+import { Layout, Input, Typography, Row, Col } from "antd";
 import MapContainer from "./components/MapContainer";
 import NavBar from "./components/NavBar";
 import NavLogo from "./components/NavLogo";
 import * as conColors from "./colors";
+import bg from "./bg.jpg";
+import "./App.less";
 
-import React, { useEffect, useState } from "react";
 const { Title } = Typography;
 const { Header, Content, Footer } = Layout;
 const { Search } = Input;
@@ -14,7 +14,6 @@ const { Search } = Input;
 const txtColor = conColors.txtColor;
 const footerBgColor = conColors.footerBgColor;
 const footerTxtColor = conColors.footerTxtColor;
-const cardcolor = conColors.cardcolor;
 
 // let searched=''
 function App() {
@@ -36,7 +35,7 @@ function App() {
         <Content
           className="site-layout"
           style={{
-            padding: "0 50px",
+            padding: "0 10vw",
             marginTop: "64px",
             backgroundImage: `url(${bg})`,
             backgroundSize: 'cover'
@@ -45,36 +44,27 @@ function App() {
           <div style={{ margin: "16px 0" }}></div>
           <div
             className="site-layout-background"
-            style={{ padding: "24px", minHeight: "780px" }}
+            style={{ padding: "6px", }}
           >
-            <div style={{ textAlign: "center" }}>
-              <Title style={{ color: txtColor }}>Crime Rate Detector</Title>
-              <div
-                style={{ position: "sticky", textAlign: "center", top: "25%" }}
-              >
+          <Row gutter={[10,20]}>
+              <Col span={24}  >
+                <Title style={{ color: txtColor , textAlign:"center" }}>Crime Rate Detector</Title>
+              </Col>
+              <Col span={24}>
                 <Search
                   placeholder="Enter Area to find Crime Rate"
                   theme="light"
                   onSearch={onSearch}
                   enterButton
-                  size="middle"
-                  style={{ width: "260px" }}
+                  // size="middle"
+                style={{ width: "65%", margin:"0 auto",display:"block" }}
                 />
-              </div>
-            </div>
-            <div
-              style={{
-                position: "absolute",
-                left: "50%",
-                top: "60%",
-                transform: "translate(-50%, -50%)",
-                height: "50%",
-                width: "70%",
-                overflow: "hidden",
-              }}
-            >
-              <MapContainer searchedCity={searchedCity} />
-            </div>
+              </Col>
+              <Col span={24} >
+                <MapContainer searchedCity={searchedCity} />
+              </Col>
+            </Row>
+
           </div>
         </Content>
         <Footer

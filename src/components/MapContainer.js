@@ -64,7 +64,7 @@ export class MapContainer extends Component {
     }
     return (
       // console.log(this.state)
-      <div>
+      <div style={{position:"relative", height: "60vh" }}>
         <Map
           google={this.props.google}
           zoom={zoomno}
