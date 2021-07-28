@@ -43,7 +43,7 @@ function App() {
         crimeType: Number(crimeType)
       })
     };
-    const response = await fetch('http://crimemodel.herokuapp.com/predicts', requestOptions);
+    const response = await fetch('https://crimemodel.herokuapp.com/predicts', requestOptions);
     const data = await response.json();
     setpredictionData({
       year: data.year,
