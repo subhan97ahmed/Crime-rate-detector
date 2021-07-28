@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { Map, GoogleApiWrapper, Marker, Circle } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, Circle, } from 'google-maps-react';
 import { Spin } from 'antd';
 
 const mapStyles = {
@@ -64,7 +64,7 @@ export class MapContainer extends Component {
     }
     return (
       // console.log(this.state)
-      <div style={{position:"relative", height: "60vh" }}>
+      <div style={{ position: "relative", height: "60vh" }}>
         <Map
           google={this.props.google}
           zoom={zoomno}
@@ -76,27 +76,31 @@ export class MapContainer extends Component {
           bounds={bounds}
 
         >
-          {points.map((point) =>
-            // <div>
-            // {/* <Marker
-            //   title={point.name}
-            //   name={point.name}
-            //   position={{ lat: point.lat, lng: point.lng }} >
-            // </Marker> */}
-            <Circle
-              radius={1000}
-              center={{ lat: point.lat, lng: point.lng }}
-              onMouseover={() => console.log('mouseover')}
-              onClick={() => console.log('click')}
-              onMouseout={() => console.log('mouseout')}
-              strokeColor='transparent'
-              strokeOpacity={0}
-              strokeWeight={5}
-              fillColor='#FF0000'
-              fillOpacity={0.2}
-            />
-            // </div>
-          )}
+          {
+
+            points.map((point) =>
+              //   <div>
+              //     <Marker>
+              //    title={point.name}
+              //    name={point.name}
+              //    position={{ lat: point.lat, lng: point.lng }} >
+              //  </Marker>
+              <Circle
+                // name={point.name}  
+                radius={10000}
+                center={{ lat: point.lat, lng: point.lng }}
+                onMouseover={() => console.log('mouseover')}
+                onClick={() => console.log('click')}
+                onMouseout={() => console.log('mouseout')}
+                strokeColor='transparent'
+                strokeOpacity={0}
+                strokeWeight={5}
+                fillColor='#FF0000'
+                fillOpacity={0.2}
+              />
+              // </div>
+            )
+          }
         </Map>
       </div>
     );
@@ -105,7 +109,7 @@ export class MapContainer extends Component {
 
 const loadingSpin = (props) => (
 
-  <div> <Spin style={{ textAlign: "center" }} size="large"></Spin></div>
+  <div style={{ textAlign: "center" }}> <Spin size="large"></Spin></div>
 )
 export default GoogleApiWrapper({
   apiKey: '',

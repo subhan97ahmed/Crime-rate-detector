@@ -1,5 +1,5 @@
-import '../App.less';
 import { Menu } from 'antd';
+import '../App.less';
 function NavBar(props) {
 
     const onClickNav=(key) => {

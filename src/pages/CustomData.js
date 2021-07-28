@@ -1,12 +1,11 @@
-import "../App.less"
-import bg from '../bg.jpg'
-import { Layout, Typography, Table } from 'antd';
+import React from 'react';
+import { Layout, Typography, Table, Upload, message, Button } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import NavBar from '../components/NavBar';
 import NavLogo from '../components/NavLogo'
 import * as conColors from '../colors'
-
-import { Upload, message, Button } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import bg from '../bg.jpg'
+import "../App.less"
 
 const { Title } = Typography;
 const { Header, Content, Footer } = Layout;
