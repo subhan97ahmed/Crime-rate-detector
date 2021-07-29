@@ -1,6 +1,6 @@
 import "../App.less";
 import bg from "../bg.jpg";
-import { Layout, Typography, Image, Space } from "antd";
+import { Layout, Typography, Image} from "antd";
 import NavBar from "../components/NavBar";
 import NavLogo from "../components/NavLogo";
 import log1 from "../logo1.png";
