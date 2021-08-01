@@ -25,7 +25,7 @@ function Login() {
   //const [gender, setGender] = useState("");
 
   
-
+  function handlereq(event) {
     console.log("Qaseem");
     console.log(email, password);
     event.preventDefault();
@@ -175,6 +175,6 @@ function Login() {
         </Footer>
       </Layout>
     </>
-  );
-
+  )
+}
 export default Login;
