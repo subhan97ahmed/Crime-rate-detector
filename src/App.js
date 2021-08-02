@@ -6,6 +6,7 @@ import NavLogo from "./components/NavLogo";
 import * as conColors from "./colors";
 import bg from "./bg.jpg";
 import "./App.less";
+import { useHistory } from "react-router-dom";
 
 const { Title } = Typography;
 const { Header, Content, Footer } = Layout;
@@ -24,9 +25,16 @@ function App() {
   const [year, setyear] = useState('')
   const [month, setmonth] = useState('month')
   const [crimeType, setcrimeType] = useState('Crime Type')
+  const history = useHistory();
+  const email = localStorage.getItem("email");
+
   const onSearch = (value) => {
     // if(value!==searched){
-    setsearchedCity(value);
+    {
+      email ? setsearchedCity(value) :
+        window.location.replace("./login");
+      ;
+    }
     // }
   };
   const OnClickPredict = async () => {
@@ -35,15 +43,21 @@ function App() {
     // console.log(crimeType)
 
     const requestOptions = {
-      method: 'POST',
-      headers: { 'accept': 'application/json', 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         year: Number(year),
         month: Number(month),
-        crimeType: Number(crimeType)
-      })
+        crimeType: Number(crimeType),
+      }),
     };
-    const response = await fetch('https://crimemodel.herokuapp.com/predicts', requestOptions);
+    const response = await fetch(
+      "https://crimemodel.herokuapp.com/predicts",
+      requestOptions
+    );
     const data = await response.json();
     setpredictionData({
       year: data.year,
@@ -54,12 +68,11 @@ function App() {
       east_prediction: data.east_prediction,
       west_prediction: data.west_prediction,
       central_prediction: data.central_prediction,
-      malir_prediction: data.malir_prediction
+      malir_prediction: data.malir_prediction,
     });
-
   };
 
-  console.log(predictionData)
+  console.log(predictionData);
   return (
     <div className="App">
       <Layout>
@@ -73,17 +86,16 @@ function App() {
             padding: "0 10vw",
             marginTop: "64px",
             backgroundImage: `url(${bg})`,
-            backgroundSize: 'cover'
+            backgroundSize: "cover",
           }}
         >
           <div style={{ margin: "16px 0" }}></div>
-          <div
-            className="site-layout-background"
-            style={{ padding: "6px", }}
-          >
+          <div className="site-layout-background" style={{ padding: "6px" }}>
             <Row gutter={[10, 20]}>
-              <Col span={24}  >
-                <Title style={{ color: txtColor, textAlign: "center" }}>Crime Rate Detector</Title>
+              <Col span={24}>
+                <Title style={{ color: txtColor, textAlign: "center" }}>
+                  Crime Rate Detector
+                </Title>
               </Col>
               <Col span={24}>
                 <Row gutter={[5, 7]}>
@@ -94,16 +106,42 @@ function App() {
                       onSearch={onSearch}
                       enterButton
                       size="large"
-                      style={{ width: "65%", margin: "0 auto", display: "block" }}
+                      style={{
+                        width: "65%",
+                        margin: "0 auto",
+                        display: "block",
+                      }}
                     />
                   </Col>
                 </Row>
                 <Row gutter={[10, 10]} style={{ marginTop: "20px" }}>
                   <Col xs={24} lg={7}>
-                    <Input placeholder="Year" value={year} type="number" size="large" onKeyDown={() => { }} onChange={e => setyear(e.target.value)} style={{ width: "100%", margin: "0 auto", display: "block" }} />
+                    <Input
+                      placeholder="Year"
+                      value={year}
+                      type="number"
+                      size="large"
+                      onKeyDown={() => { }}
+                      onChange={(e) => setyear(e.target.value)}
+                      style={{
+                        width: "100%",
+                        margin: "0 auto",
+                        display: "block",
+                      }}
+                    />
                   </Col>
                   <Col xs={24} lg={7}>
-                    <Select defaultValue="Month" size="large" value={month} onSelect={e => setmonth(e)} style={{ width: "100%", margin: "0 auto", display: "block" }}>
+                    <Select
+                      defaultValue="Month"
+                      size="large"
+                      value={month}
+                      onSelect={(e) => setmonth(e)}
+                      style={{
+                        width: "100%",
+                        margin: "0 auto",
+                        display: "block",
+                      }}
+                    >
                       <Option value="1">January</Option>
                       <Option value="2">February</Option>
                       <Option value="3">March</Option>
@@ -119,7 +157,17 @@ function App() {
                     </Select>
                   </Col>
                   <Col xs={24} lg={7}>
-                    <Select defaultValue="Crime Type" value={crimeType} size="large" onSelect={e => setcrimeType(e)} style={{ width: "100%", margin: "0 auto", display: "block" }}>
+                    <Select
+                      defaultValue="Crime Type"
+                      value={crimeType}
+                      size="large"
+                      onSelect={(e) => setcrimeType(e)}
+                      style={{
+                        width: "100%",
+                        margin: "0 auto",
+                        display: "block",
+                      }}
+                    >
                       <Option value="1">Bank robbery</Option>
                       <Option value="2">Car snatching</Option>
                       <Option value="3">Highway robbery</Option>
@@ -129,16 +177,26 @@ function App() {
                     </Select>
                   </Col>
                   <Col xs={24} lg={3}>
-                    <Button type="primary" size="large" style={{ color: footerBgColor, width: "100%", margin: "0 auto", display: "block" }} onClick={OnClickPredict}>Predict</Button>
+                    <Button
+                      type="primary"
+                      size="large"
+                      style={{
+                        color: footerBgColor,
+                        width: "100%",
+                        margin: "0 auto",
+                        display: "block",
+                      }}
+                      onClick={OnClickPredict}
+                    >
+                      Predict
+                    </Button>
                   </Col>
-
                 </Row>
               </Col>
               <Col span={24} >
                 <MapContainer searchedCity={searchedCity} predictionData={predictionData} />
               </Col>
             </Row>
-
           </div>
         </Content>
         <Footer
