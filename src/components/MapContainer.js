@@ -11,48 +11,53 @@ const mapStyles = {
 var points = ''
 export class MapContainer extends Component {
 
+
   constructor(props) {
+    super(props);
+
     // demo data
     points = [
       {
         name: 'south',
-        lat: 24.8605
-        , lng: 67.0261
+        lat: 24.8605,
+        lng: 67.0261,
+        pre: ((this.props.predictionData?.south_prediction) || '').replace(/[\[\]']+/g, '')
       },
       {
         // east
         name: 'east',
-        lat: 24.8844
-        , lng: 67.1443
+        lat: 24.8844, lng: 67.1443,
+        pre: ((this.props.predictionData?.east_prediction) || '').replace(/[\[\]']+/g, '')
       },
       {
         // west
         name: 'west',
         lat: 24.8829
-        , lng: 66.9748
+        , lng: 66.9748,
+        pre: ((this.props.predictionData?.west_prediction) || '').replace(/[\[\]']+/g, '')
       },
       {
-        // centeral
-        name: 'centeral',
+        // central
+        name: 'central',
         lat: 24.9313
         , lng: 67.0374
+        , pre: ((this.props.predictionData?.central_prediction) || '').replace(/[\[\]']+/g, '')
       },
       {
         // malir
         name: 'malir',
         lat: 25.0960
-        , lng: 67.1871
+        , lng: 67.1871,
+        pre: ((this.props.predictionData?.malir_prediction) || '').replace(/[\[\]']+/g, '')
       }
     ]
-
-    super(props);
-    console.log(this.props.searchedCity);
     this.state = {
       lat: 24.860966,
       lng: 66.990501
     };
   }
   render() {
+    console.log(this.props)
     const zoomno = 15
     // console.log(this.state) 
     var bounds = new this.props.google.maps.LatLngBounds();
@@ -62,8 +67,14 @@ export class MapContainer extends Component {
         this.state = points[i]
       }
     }
+
+    // let q= 
+    // console.log(q) 
+    // console.log( typeof this.props.predictionData.south_prediction)
+    
+    //  console.log((Math.trunc(point.pre) * 100))
     return (
-      // console.log(this.state)
+
       <div style={{ position: "relative", height: "60vh" }}>
         <Map
           google={this.props.google}
@@ -71,23 +82,23 @@ export class MapContainer extends Component {
           style={mapStyles}
           initialCenter=
           {
-            this.state
+            {
+              // this.state
+              lat: 24.860966,
+              lng: 66.990501
+            }
           }
-          bounds={bounds}
 
         >
           {
 
             points.map((point) =>
-              //   <div>
-              //     <Marker>
-              //    title={point.name}
-              //    name={point.name}
-              //    position={{ lat: point.lat, lng: point.lng }} >
-              //  </Marker>
+              // <div>
+              
               <Circle
-                // name={point.name}  
-                radius={10000}
+                name={point.name}
+                // Math.trunc(point.pre * 100)  
+                radius={(Math.trunc(parseInt(point.pre)) * 500)}
                 center={{ lat: point.lat, lng: point.lng }}
                 onMouseover={() => console.log('mouseover')}
                 onClick={() => console.log('click')}
@@ -98,9 +109,23 @@ export class MapContainer extends Component {
                 fillColor='#FF0000'
                 fillOpacity={0.2}
               />
-              // </div>
+              //  </div>
+
             )
           }
+          {points.map((point) =>
+
+            <Marker
+              title={point.pre}
+              name={point.pre}
+              position={{ lat: point.lat, lng: point.lng }} >
+            </Marker>
+
+
+          )
+          }
+
+
         </Map>
       </div>
     );

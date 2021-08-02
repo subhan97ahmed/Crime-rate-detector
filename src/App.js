@@ -20,10 +20,10 @@ const footerTxtColor = conColors.footerTxtColor;
 function App() {
 
   const [searchedCity, setsearchedCity] = useState('')
-  const [predictionData, setpredictionData] = useState('')
+  const [predictionData, setpredictionData] = useState(null)
   const [year, setyear] = useState('')
-  const [month, setmonth] = useState('')
-  const [crimeType, setcrimeType] = useState('')
+  const [month, setmonth] = useState('month')
+  const [crimeType, setcrimeType] = useState('Crime Type')
   const onSearch = (value) => {
     // if(value!==searched){
     setsearchedCity(value);
@@ -52,7 +52,7 @@ function App() {
       prediction: data.prediction,
       south_prediction: data.south_prediction,
       east_prediction: data.east_prediction,
-      west_prediction: data.crimeTypewest_prediction,
+      west_prediction: data.west_prediction,
       central_prediction: data.central_prediction,
       malir_prediction: data.malir_prediction
     });
@@ -135,7 +135,7 @@ function App() {
                 </Row>
               </Col>
               <Col span={24} >
-                <MapContainer searchedCity={searchedCity} />
+                <MapContainer searchedCity={searchedCity} predictionData={predictionData} />
               </Col>
             </Row>
 
