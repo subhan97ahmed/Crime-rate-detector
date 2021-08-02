@@ -6,13 +6,12 @@ import NavLogo from "./components/NavLogo";
 import * as conColors from "./colors";
 import bg from "./bg.jpg";
 import "./App.less";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const { Title } = Typography;
 const { Header, Content, Footer } = Layout;
 const { Search } = Input;
 const { Option } = Select;
-
 
 const txtColor = conColors.txtColor;
 const footerBgColor = conColors.footerBgColor;
@@ -29,10 +28,10 @@ function App() {
   const [crimeType, setcrimeType] = useState("");
   const onSearch = (value) => {
     // if(value!==searched){
-    {email ? setsearchedCity(value) : 
-      alert("Login first");
-      
-      history.push("./login")
+    {
+      email ? setsearchedCity(value) : 
+      window.location.replace("./login");
+      ;
     }
     // }
   };
