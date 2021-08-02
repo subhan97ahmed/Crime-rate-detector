@@ -1,6 +1,12 @@
 import { Menu } from "antd";
+import { useHistory } from "react-router-dom";
+
 import "../App.less";
+const email = localStorage.getItem("email");
+
 function NavBar(props) {
+  const history = useHistory();
+
   const onClickNav = (key) => {
     if (key === 1) {
       window.location.replace("/");
@@ -16,6 +22,9 @@ function NavBar(props) {
     } else if (key === 5) {
       // selectedOp=5
       window.location.replace("/signup");
+    } else if (key === 6) {
+      // selectedOp=6
+      window.location.replace("/logout");
     }
   };
 
@@ -29,18 +38,36 @@ function NavBar(props) {
         <Menu.Item key="1" onClick={() => onClickNav(1)}>
           Home
         </Menu.Item>
+        {email ? 
         <Menu.Item key="2" onClick={() => onClickNav(2)}>
           Custom Data
         </Menu.Item>
+        : null}
         <Menu.Item key="3" onClick={() => onClickNav(3)}>
           About
         </Menu.Item>
-        <Menu.Item key="4" onClick={() => onClickNav(4)}>
-          Login
-        </Menu.Item>
-        <Menu.Item key="5" onClick={() => onClickNav(5)}>
-          Signup
-        </Menu.Item>
+        {email ? 
+          <Menu.Item
+            key="6"
+            style={{ marginLeft: "720px" }}
+            onClick={() => onClickNav(6)}
+          >
+            Logout
+          </Menu.Item>
+         : 
+          <Menu.Item
+            key="4"
+            style={{ marginLeft: "680px" }}
+            onClick={() => onClickNav(4)}
+          >
+            Login
+          </Menu.Item>
+        }
+        {email ? null : (
+          <Menu.Item key="5" onClick={() => onClickNav(5)}>
+            Signup
+          </Menu.Item>
+        )}
       </Menu>
     </>
   );

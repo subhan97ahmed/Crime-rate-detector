@@ -24,10 +24,10 @@ function Login() {
   const [password, setPassword] = useState("");
   //const [gender, setGender] = useState("");
 
-  
   function handlereq(event) {
     console.log("Qaseem");
     console.log(email, password);
+    //localStorage.setItem("email", email);
     event.preventDefault();
 
     if (
@@ -43,12 +43,13 @@ function Login() {
         })
         .then(function (response) {
           console.log(response);
-          console.log("jabbar");
-          alert("Successfully Login");
-          history.push("/");
+          window.localStorage.setItem('email',email);
+          // alert("Successfully Login");
+          window.location.replace("/");
         })
         .catch(function (error) {
           console.log(error);
+          alert("Invalid email or password");
         });
     } else {
       alert("Please fill form completely");
@@ -157,7 +158,7 @@ function Login() {
                   htmlType="submit"
                   className="Signup-button"
                 >
-                  Register 
+                  Register
                 </Button>
                 {/* <a style={{marginLeft:'300px'}} href="src\pages\Signup.js">register now!</a> */}
               </Form.Item>
@@ -175,6 +176,6 @@ function Login() {
         </Footer>
       </Layout>
     </>
-  )
+  );
 }
 export default Login;

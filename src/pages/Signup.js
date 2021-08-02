@@ -404,9 +404,9 @@ function Signup() {
                 ]}
                 {...tailFormItemLayout}
               >
-                <Checkbox>
-                  I have read the <a href="">agreement</a>
-                </Checkbox>
+                <a href="./login">
+                  Already have an account account ?
+                </a>
               </Form.Item>
               <Form.Item>
                 <Button type="primary" htmlType="submit" onClick={handlereq}>
