@@ -23,7 +23,7 @@ function App() {
   const [searchedCity, setsearchedCity] = useState('')
   const [predictionData, setpredictionData] = useState(null)
   const [year, setyear] = useState('')
-  const [month, setmonth] = useState('month')
+  const [month, setmonth] = useState('Month')
   const [crimeType, setcrimeType] = useState('Crime Type')
   const history = useHistory();
   const email = localStorage.getItem("email");
@@ -33,7 +33,7 @@ function App() {
     {
       email ? setsearchedCity(value) :
         window.location.replace("./login");
-      ;
+
     }
     // }
   };
@@ -41,38 +41,42 @@ function App() {
     // console.log(year)
     // console.log(month)
     // console.log(crimeType)
-
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        year: Number(year),
-        month: Number(month),
-        crimeType: Number(crimeType),
-      }),
-    };
-    const response = await fetch(
-      "https://crimemodel.herokuapp.com/predicts",
-      requestOptions
-    );
-    const data = await response.json();
-    setpredictionData({
-      year: data.year,
-      month: data.month,
-      crimeType: data.crimeType,
-      prediction: data.prediction,
-      south_prediction: data.south_prediction,
-      east_prediction: data.east_prediction,
-      west_prediction: data.west_prediction,
-      central_prediction: data.central_prediction,
-      malir_prediction: data.malir_prediction,
-    });
+    if (Number(year) >= 1800 && month !== 'Month' && crimeType !== 'Crime Type') {
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          year: Number(year),
+          month: Number(month),
+          crimeType: Number(crimeType),
+        }),
+      };
+      const response = await fetch(
+        "https://crimemodel.herokuapp.com/predicts",
+        requestOptions
+      );
+      const data = await response.json();
+      setpredictionData({
+        year: data.year,
+        month: data.month,
+        crimeType: data.crimeType,
+        prediction: data.prediction,
+        south_prediction: data.south_prediction,
+        east_prediction: data.east_prediction,
+        west_prediction: data.west_prediction,
+        central_prediction: data.central_prediction,
+        malir_prediction: data.malir_prediction,
+      });
+      console.log(predictionData);
+    }
+    else {
+      alert('fill all the text fields')
+    }
   };
-
-  console.log(predictionData);
+  
   return (
     <div className="App">
       <Layout>

@@ -57,7 +57,7 @@ export class MapContainer extends Component {
     };
   }
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     const zoomno = 15
     // console.log(this.state) 
     var bounds = new this.props.google.maps.LatLngBounds();

@@ -38,36 +38,33 @@ function NavBar(props) {
         <Menu.Item key="1" onClick={() => onClickNav(1)}>
           Home
         </Menu.Item>
-        {email ? 
-        <Menu.Item key="2" onClick={() => onClickNav(2)}>
-          Custom Data
-        </Menu.Item>
-        : null}
+        {email ?
+          <Menu.Item key="2" onClick={() => onClickNav(2)}>
+            Custom Data
+          </Menu.Item>
+          : null}
         <Menu.Item key="3" onClick={() => onClickNav(3)}>
           About
         </Menu.Item>
-        {email ? 
+        {email ?
           <Menu.Item
-            key="6"
-            style={{ marginLeft: "720px" }}
+            key="6" 
             onClick={() => onClickNav(6)}
           >
             Logout
           </Menu.Item>
-         : 
+            : null} 
           <Menu.Item
             key="4"
-            style={{ marginLeft: "680px" }}
             onClick={() => onClickNav(4)}
           >
             Login
           </Menu.Item>
-        }
         {email ? null : (
           <Menu.Item key="5" onClick={() => onClickNav(5)}>
             Signup
           </Menu.Item>
-        )}
+         )} 
       </Menu>
     </>
   );
