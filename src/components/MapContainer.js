@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { Map, GoogleApiWrapper, Marker, Circle, } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, Circle, InfoWindow } from 'google-maps-react';
 import { Spin } from 'antd';
 
 const mapStyles = {
@@ -53,10 +53,27 @@ export class MapContainer extends Component {
     ]
     this.state = {
       lat: 24.860966,
-      lng: 66.990501
+      lng: 66.990501,
+      showingInfoWindow: false,
+      marker: null,
     };
   }
+
+  onMarkerClick = (props) => {
+    this.setState({
+      lat: 24.860966,
+      lng: 66.990501,
+      showingInfoWindow: true
+    });
+  };
+
+
   render() {
+
+    const handleMarkerClick = (props, marker, e) => {
+      this.state.showingInfoWindow = true
+      this.state.marker = marker
+    }
     // console.log(this.props)
     const zoomno = 15
     // console.log(this.state) 
@@ -68,11 +85,13 @@ export class MapContainer extends Component {
       }
     }
 
+    console.log(points[0].pre)
     // let q= 
     // console.log(q) 
     // console.log( typeof this.props.predictionData.south_prediction)
-    
+
     //  console.log((Math.trunc(point.pre) * 100))
+    // console.log(points)
     return (
 
       <div style={{ position: "relative", height: "60vh" }}>
@@ -83,9 +102,12 @@ export class MapContainer extends Component {
           initialCenter=
           {
             {
-              // this.state
-              lat: 24.860966,
-              lng: 66.990501
+              // this.  state
+              // lat: 24.860966,
+              // lng: 66.990501
+              lat: this.state.lat,
+              lng: this.state.lng
+
             }
           }
 
@@ -94,11 +116,11 @@ export class MapContainer extends Component {
 
             points.map((point) =>
               // <div>
-              
               <Circle
-                name={point.name}
-                // Math.trunc(point.pre * 100)  
-                radius={(Math.trunc(parseInt(point.pre)) * 500)}
+                name={point.pre+""}
+                // Math.trunc(point.pre * 100) 
+                // Math.trunc(parseInt(point.pre.replace('.','')))  
+                radius={(Math.trunc(point.pre.replace('.','').slice(0,4)))}
                 center={{ lat: point.lat, lng: point.lng }}
                 onMouseover={() => console.log('mouseover')}
                 onClick={() => console.log('click')}
@@ -116,12 +138,10 @@ export class MapContainer extends Component {
           {points.map((point) =>
 
             <Marker
-              title={point.pre}
-              name={point.pre}
+              title={point.name}
+              name={point.name}
               position={{ lat: point.lat, lng: point.lng }} >
             </Marker>
-
-
           )
           }
 
