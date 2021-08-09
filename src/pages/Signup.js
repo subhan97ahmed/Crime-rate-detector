@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import "../App.less";
 import bg from "../bg.jpg";
 import NavBar from "../components/NavBar";
-import { Layout, Typography, Image } from "antd";
 import * as conColors from "../colors";
 import NavLogo from "../components/NavLogo";
-import { Form, Input, Select, Checkbox, Button } from "antd";
+import {
+  Form,
+  Input,
+  Select,
+  Checkbox,
+  Button,
+  Layout,
+  Typography,
+  Image,
+  message,
+} from "antd";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -15,42 +24,7 @@ const { Title } = Typography;
 const txtColor = conColors.txtColor;
 const footerBgColor = conColors.footerBgColor;
 const footerTxtColor = conColors.footerTxtColor;
-
 const { Option } = Select;
-// const residences = [
-//   {
-//     value: "zhejiang",
-//     label: "Zhejiang",
-//     children: [
-//       {
-//         value: "hangzhou",
-//         label: "Hangzhou",
-//         children: [
-//           {
-//             value: "xihu",
-//             label: "West Lake",
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     value: "jiangsu",
-//     label: "Jiangsu",
-//     children: [
-//       {
-//         value: "nanjing",
-//         label: "Nanjing",
-//         children: [
-//           {
-//             value: "zhonghuamen",
-//             label: "Zhong Hua Men",
-//           },
-//         ],
-//       },
-//     ],
-//   },
-// ];
 const formItemLayout = {
   labelCol: {
     xs: {
@@ -69,94 +43,81 @@ const formItemLayout = {
     },
   },
 };
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
+// const tailFormItemLayout = {
+//   wrapperCol: {
+//     xs: {
+//       span: 24,
+//       offset: 0,
+//     },
+//     sm: {
+//       span: 16,
+//       offset: 8,
+//     },
+//   },
+// };
 
-const RegistrationForm = () => {
-  const [form] = Form.useForm();
+// const onFinish = () => {
+//   console.log("Received values of form: ");
+// };
 
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
+// const RegistrationForm = () => {
 
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        style={{
-          width: 70,
-        }}
-      >
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
-      </Select>
-    </Form.Item>
-  );
-  //   const [autoCompleteResult, setAutoCompleteResult] = useState([]);
+//   const prefixSelector = (
+//     <Form.Item name="prefix" noStyle>
+//       <Select
+//         style={{
+//           width: 70,
+//         }}
+//       >
+//         <Option value="86">+86</Option>
+//         <Option value="87">+87</Option>
+//       </Select>
+//     </Form.Item>
+//   );
+// };
 
-  //   const onWebsiteChange = (value) => {
-  //     if (!value) {
-  //       setAutoCompleteResult([]);
-  //     } else {
-  //       setAutoCompleteResult(
-  //         [".com", ".org", ".net"].map((domain) => `${value}${domain}`)
-  //       );
-  //     }
-  //   };
-
-  //   const websiteOptions = autoCompleteResult.map((website) => ({
-  //     label: website,
-  //     value: website,
-  //   }));
-};
 function Signup() {
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //const [gender, setGender] = useState("");
-  function handlereq(event) {
+  const [cPassword, setcPassword] = useState("");
+
+  function handlereq() {
     console.log("Qaseem");
     console.log(username, email, password);
-    event.preventDefault();
+    // event.preventDefault();
 
-    console.log(username);
+    //console.log(username);
+
     if (
-      username.trim() !== "" &&
-      email.trim() !== "" &&
-      password.trim() !== ""
-      //gender.trim() !== ""
+      // username.trim() !== "" &&
+      // email.trim() !== "" &&
+      // password.trim() !== ""
+      password === cPassword
     ) {
       // "http://localhost:4001/api/users"
+      var loading = message.loading("Signing up", 0);
       axios
         .post("https://crime-backend.herokuapp.com/api/users", {
           username: username,
           email: email,
           password: password,
-          //gender: gender,
         })
         .then(function (response) {
           console.log(response);
-
-          alert("Successfully Signup");
-          window.location.replace("/login");
+          setTimeout(loading, 1);
+          message.info("Successfully Signup");
+          window.location.replace("./login");
         })
         .catch(function (error) {
           console.log(error);
         });
     } else {
-      alert("Please fill form completely");
+      message.error("Password does not match ");
     }
   }
+
   return (
     <>
       <Layout className="Signup">
@@ -187,115 +148,121 @@ function Signup() {
               className="signup-form"
               {...formItemLayout}
               //   form={form}
-              name="register"
+              // name="register"
               //   onFinish={onFinish}
-              initialValues={{
-                residence: ["zhejiang", "hangzhou", "xihu"],
-                prefix: "86",
-              }}
-              scrollToFirstError
+              // initialValues={{
+              //   residence: ["zhejiang", "hangzhou", "xihu"],
+              //   prefix: "86",
+              // }}
+              // scrollToFirstError
+              onFinish={handlereq}
             >
               <Form.Item
-                name="username"
-                // label="Username"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your Username!",
-                  },
-                ]}
-                value={username}
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                }}
+              // name="username"
+              // // label="Username"
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please input your Username!",
+              //   },
+              // ]}
+              // value={username}
+              // onChange={(e) => {
+              //   setUsername(e.target.value);
+              // }}
               >
-                <Input placeholder="Username" />
+                <Input
+                  required="true"
+                  value={username}
+                  placeholder="Username"
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                  }}
+                />
               </Form.Item>
               <Form.Item
-                name="email"
-                // label="E-mail"
-                color="white"
-                rules={[
-                  {
-                    type: "email",
-                    message: "The input is not valid E-mail!",
-                  },
-                  {
-                    required: true,
-                    message: "Please input your E-mail!",
-                  },
-                ]}
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
+              // name="email"
+              // // label="E-mail"
+              // color="white"
+              // rules={[
+              //   {
+              //     type: "email",
+              //     message: "The input is not valid E-mail!",
+              //   },
+              //   {
+              //     required: true,
+              //     message: "Please input your E-mail!",
+              //   },
+              // ]}
+              // value={email}
+              // onChange={(e) => {
+              //   setEmail(e.target.value);
+              // }}
               >
-                <Input placeholder="E-mail!" />
+                <Input
+                  type="email"
+                  required="true"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  placeholder="E-mail"
+                />
               </Form.Item>
 
               <Form.Item
-                name="Password"
-                // label="Password"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your password!",
-                  },
-                ]}
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                hasFeedback
+              // name="Password"
+              // // label="Password"
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please input your password!",
+              //   },
+              // ]}
+              // value={password}
+              // onChange={(e) => {
+              //   setPassword(e.target.value);
+              // }}
+              // hasFeedback
               >
-                <Input.Password placeholder="Entre your password" />
+                <Input.Password
+                  required="true"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  placeholder=" Password"
+                />
+              </Form.Item>
+              <Form.Item>
+                <Input.Password
+                  required="true"
+                  value={cPassword}
+                  //  title="Password not match"
+                  onChange={(e) => {
+                    setcPassword(e.target.value);
+                  }}
+                  placeholder="Please confirm your password"
+                />
               </Form.Item>
 
-              {/* <Form.Item
-                name="Confirm"
-                // label="Confirm password"
-                dependencies={["password"]}
-                hasFeedback
-                rules={[
-                  {
-                    required: true,
-                    message: "Please confirm your password!",
-                  },
-                  ({ getFieldValue }) => ({
-                    validator(_, value) {
-                      if (!value || getFieldValue("password") === value) {
-                        return Promise.resolve();
-                      }
-
-                      return Promise.reject(
-                        new Error(
-                          "The two passwords that you entered do not match!"
-                        )
-                      );
-                    },
-                  }),
-                ]}
-              >
-                <Input.Password placeholder="Confirm your password" />
-              </Form.Item> */}
-
               <Form.Item
-                name="agreement"
-                valuePropName="checked"
-                rules={[
-                  {
-                    validator: (_, value) =>
-                      value
-                        ? Promise.resolve()
-                        : Promise.reject(new Error("Should accept agreement")),
-                  },
-                ]}
-                {...tailFormItemLayout}
+              // name="agreement"
+              // valuePropName="checked"
+              // rules={[
+              //   {
+              //     validator: (_, value) =>
+              //       value
+              //         ? Promise.resolve()
+              //         : Promise.reject(new Error("Should accept agreement")),
+              //   },
+              // ]}
+              // {...tailFormItemLayout}
               >
                 <a href="./login">Already have an account account ?</a>
               </Form.Item>
               <Form.Item>
-                <Button type="primary" htmlType="submit" onClick={handlereq}>
+                <Button type="primary" htmlType="submit">
                   Register
                 </Button>
               </Form.Item>
@@ -315,4 +282,5 @@ function Signup() {
     </>
   );
 }
+
 export default Signup;

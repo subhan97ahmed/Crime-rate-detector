@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import "../App.less";
 import bg from "../bg.jpg";
 import NavBar from "../components/NavBar";
-import { Layout, Typography, Image } from "antd";
 import * as conColors from "../colors";
 import NavLogo from "../components/NavLogo";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox,message,Layout, Typography, Image  } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -22,38 +21,29 @@ function Login() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //const [gender, setGender] = useState("");
 
   function handlereq(event) {
     console.log("Qaseem");
     console.log(email, password);
-    //localStorage.setItem("email", email);
     event.preventDefault();
 
-    if (
-      email.trim() !== "" &&
-      password.trim() !== ""
-      //gender.trim() !== ""
-    ) {
-      // http://localhost:4001/api/auth
+    if (email.trim() !== "" && password.trim() !== "") {
       axios
         .post("https://crime-backend.herokuapp.com/api/auth", {
           email: email,
           password: password,
-          //gender: gender,
         })
         .then(function (response) {
           console.log(response);
-          window.localStorage.setItem('email',email);
-          // alert("Successfully Login");
+          window.localStorage.setItem("email", email);
           window.location.replace("/");
         })
         .catch(function (error) {
           console.log(error);
-          alert("Invalid email or password");
+          message.error("Invalid email or password");
         });
     } else {
-      alert("Please fill form completely");
+      message.error("Please fill form completely");
     }
   }
 
@@ -67,11 +57,12 @@ function Login() {
         <Content
           className="site-layout"
           style={{
+            // alignContent: "center",
             padding: "0 50px",
             marginTop: "64px",
             backgroundImage: `url(${bg})`,
-            backgroundSize: "cover",
-            height: "700px",
+            // backgroundSize: "cover",
+            height: "520px",
           }}
         >
           <div style={{ margin: "16px 0" }}></div>
@@ -106,7 +97,7 @@ function Login() {
               >
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder="Username"
+                  placeholder="Entre your E-mail"
                 />
               </Form.Item>
               <Form.Item
@@ -138,10 +129,6 @@ function Login() {
                     Remember me
                   </Checkbox>
                 </Form.Item>
-
-                {/* <a className="login-form-forgot" href="">
-          Forgot password
-        </a> */}
               </Form.Item>
 
               <Form.Item>
