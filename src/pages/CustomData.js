@@ -1,16 +1,15 @@
 import React from "react";
-import { Layout, Typography, Table, Upload, message, Button } from "antd";
+import { Layout, Typography, Upload, message, Button, Row, Col } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import Table from "ant-responsive-table";
 import NavBar from "../components/NavBar";
 import NavLogo from "../components/NavLogo";
 import * as conColors from "../colors";
 import bg from "../bg.jpg";
 import "../App.less";
-import { useHistory } from "react-router-dom";
 
 const { Title } = Typography;
 const { Header, Content, Footer } = Layout;
-
 const props = {
   name: "file",
   action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
@@ -32,64 +31,58 @@ const props = {
 const dataSource = [
   {
     key: "1",
-    area: "Saddar town",
-    crimeType: "Murder",
-    location: "25.123, 23.034",
-    noOfIncident: "70",
-    date: "12-12-20",
-  },
-  {
-    key: "2",
-    area: "Saddar town",
-    crimeType: "Murder",
-    location: "25.123, 23.034",
-    noOfIncident: "70",
-    date: "12-12-20",
-  },
-  {
-    key: "3",
-    area: "Saddar town",
-    crimeType: "Murder",
-    location: "25.123, 23.034",
-    noOfIncident: "70",
-    date: "12-12-20",
-  },
-  {
-    key: "4",
-    area: "Saddar town",
-    crimeType: "Murder",
-    location: "25.123, 23.034",
-    noOfIncident: "70",
-    date: "12-12-20",
+    year: 2021,
+    month: 12,
+    lat: 25.123,
+    log: 23.034,
+    crimetype: 6,
+    reported: 13,
   },
 ];
 
 const columns = [
   {
-    title: "Area",
-    dataIndex: "area",
-    key: "area",
+    title: "Year",
+    dataIndex: "year",
+    key: "year",
+    showOnResponse: true,
+    showOnDesktop: true
+  },
+  {
+    title: "Month",
+    dataIndex: "month",
+    key: "month",
+    showOnResponse: true,
+    showOnDesktop: true
+  },
+  {
+    title: "Latitude",
+    dataIndex: "lat",
+    key: "lat",
+    showOnResponse: true,
+    showOnDesktop: true
+  },
+  {
+    title: "Longitude",
+    dataIndex: "log",
+    key: "log",
+    showOnResponse: true,
+    showOnDesktop: true
   },
   {
     title: "Crime Type",
-    dataIndex: "crimeType",
-    key: "crimeType",
+    dataIndex: "crimetype",
+    key: "crimetype",
+    showOnResponse: true,
+    showOnDesktop: true
   },
   {
-    title: "Location",
-    dataIndex: "location",
-    key: "location",
-  },
-  {
-    title: "No of Incident",
-    dataIndex: "noOfIncident",
-    key: "noOfIncident",
-  },
-  {
-    title: "Date",
-    dataIndex: "date",
-    key: "date",
-  },
+    title: "Reported Number",
+    dataIndex: "reported",
+    key: "reported",
+    showOnResponse: true,
+    showOnDesktop: true
+  }
 ];
 
 const txtColor = conColors.txtColor;
@@ -106,7 +99,7 @@ function CustomData() {
         <Content
           className="site-layout"
           style={{
-            padding: "0 50px",
+            padding: "0 10vw",
             marginTop: "64px",
             backgroundImage: `url(${bg})`,
             backgroundSize: "cover",
@@ -115,31 +108,38 @@ function CustomData() {
           <div style={{ margin: "16px 0" }}></div>
           <div
             className="site-layout-background"
-            style={{ padding: "24px", minHeight: "780px" }}
+            style={{ padding: "6px", minHeight: "720px", position: "relative", height: "60vh" }}
           >
-            <div style={{ textAlign: "center" }}>
-              <Title style={{ color: txtColor }}>Custom Data</Title>
-            </div>
-            <div
-              style={{
-                position: "absolute",
-                left: "50%",
-                top: "50%",
-                transform: "translate(-50%, -50%)",
-                height: "40%",
-                width: "70%",
-              }}
-            >
-              <Table dataSource={dataSource} columns={columns} />
-              
-              <Upload {...props}>
-                <Button style={{ color: "black" }} icon={<UploadOutlined />}>
-                  Click to Upload CSV
-                </Button>
-              </Upload>
-              
-              ,
-            </div>
+            <Row >
+              <Col span={24}>
+                <Title style={{ color: txtColor, textAlign: "center" }}>Custom Data</Title>
+              </Col>
+              <Col span={24}>
+                <p style={{ color: txtColor }}>Upload CSV file of the training data as shown below(do make sure format and order of the columns is like this demo data )</p>
+              </Col>
+
+            </Row>
+            <Row>
+              <Col span={24}>
+                <Table antTableProps={{
+                  showHeader: true,
+                  columns,
+                  dataSource,
+                  pagination: false
+                }}
+                  mobileBreakPoint={768}
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col span={24} style={{ textAlign: "center" }} >
+                <Upload {...props} accept=".csv">
+                  <Button style={{ color: "black", marginTop: "20px", }} icon={<UploadOutlined />}>
+                    Click to Upload CSV
+                  </Button>
+                </Upload>
+              </Col>
+            </Row>
           </div>
         </Content>
         <Footer
