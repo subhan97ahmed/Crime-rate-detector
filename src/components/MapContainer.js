@@ -16,47 +16,61 @@ export class MapContainer extends Component {
     super(props);
 
     // demo data
-    points = [
-      {
-        name: 'south',
-        lat: 24.8605,
-        lng: 67.0261,
-        pre: ((this.props.predictionData?.south_prediction) || '').replace(/[\[\]']+/g, '')
-      },
-      {
-        // east
-        name: 'east',
-        lat: 24.8844, lng: 67.1443,
-        pre: ((this.props.predictionData?.east_prediction) || '').replace(/[\[\]']+/g, '')
-      },
-      {
-        // west
-        name: 'west',
-        lat: 24.8829
-        , lng: 66.9748,
-        pre: ((this.props.predictionData?.west_prediction) || '').replace(/[\[\]']+/g, '')
-      },
-      {
-        // central
-        name: 'central',
-        lat: 24.9313
-        , lng: 67.0374
-        , pre: ((this.props.predictionData?.central_prediction) || '').replace(/[\[\]']+/g, '')
-      },
-      {
-        // malir
-        name: 'malir',
-        lat: 25.0960
-        , lng: 67.1871,
-        pre: ((this.props.predictionData?.malir_prediction) || '').replace(/[\[\]']+/g, '')
-      }
-    ]
+    
     this.state = {
       lat: 24.860966,
       lng: 66.990501,
       showingInfoWindow: false,
       marker: null,
+      points:[]
     };
+  }
+
+  componentDidUpdate(prevProps){
+
+    if (this.props.predictionData?.south_prediction!== prevProps.predictionData?.south_prediction) {
+      
+   const  points = [
+        {
+          name: 'south',
+          lat: 24.8605,
+          lng: 67.0261,
+          pre: ((this.props.predictionData?.south_prediction) || '').replace(/[\[\]']+/g, '')
+        },
+        {
+          // east
+          name: 'east',
+          lat: 24.8844, lng: 67.1443,
+          pre: ((this.props.predictionData?.east_prediction) || '').replace(/[\[\]']+/g, '')
+        },
+        {
+          // west
+          name: 'west',
+          lat: 24.8829
+          , lng: 66.9748,
+          pre: ((this.props.predictionData?.west_prediction) || '').replace(/[\[\]']+/g, '')
+        },
+        {
+          // central
+          name: 'central',
+          lat: 24.9313
+          , lng: 67.0374
+          , pre: ((this.props.predictionData?.central_prediction) || '').replace(/[\[\]']+/g, '')
+        },
+        {
+          // malir
+          name: 'malir',
+          lat: 25.0960
+          , lng: 67.1871,
+          pre: ((this.props.predictionData?.malir_prediction) || '').replace(/[\[\]']+/g, '') 
+        }
+      ]
+      this.setState(
+        {
+          points
+        }
+      );
+    }
   }
 
   onMarkerClick = (props) => {
@@ -85,7 +99,7 @@ export class MapContainer extends Component {
       }
     }
 
-    console.log(points[0].pre)
+    // console.log(points[0].pre)
     // let q= 
     // console.log(q) 
     // console.log( typeof this.props.predictionData.south_prediction)
@@ -107,18 +121,18 @@ export class MapContainer extends Component {
               // lng: 66.990501
               lat: this.state.lat,
               lng: this.state.lng
-
+// hello
             }
           }
 
         >
           {
 
-            points.map((point) =>
+            this.state.points.map((point) =>
               // <div>
               <Circle
-                name={point.pre+""}
-                // Math.trunc(point.pre * 100) 
+                name={point.name}
+                // Math.trunc(point.pre * 100)
                 // Math.trunc(parseInt(point.pre.replace('.','')))  
                 radius={(Math.trunc(point.pre.replace('.','').slice(0,4)))}
                 center={{ lat: point.lat, lng: point.lng }}
@@ -135,7 +149,7 @@ export class MapContainer extends Component {
 
             )
           }
-          {points.map((point) =>
+          {this.state.points.map((point) =>
 
             <Marker
               title={point.name}
