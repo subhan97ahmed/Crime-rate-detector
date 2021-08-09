@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import "../App.less";
-import bg from "../bg.jpg";
-import NavBar from "../components/NavBar";
-import { Layout, Typography, Image } from "antd";
-import * as conColors from "../colors";
-import NavLogo from "../components/NavLogo";
-import { Form, Input, Button, Checkbox } from "antd";
+import { useHistory } from "react-router-dom";
+import { Layout, Typography, Form, Input, Button, Checkbox, Col, Row, Card } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import NavLogo from "../components/NavLogo";
+import bg from "../bg.jpg";
+import NavBar from "../components/NavBar";
+import * as conColors from "../colors";
+import "../App.less";
 const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
 
@@ -22,7 +21,6 @@ function Login() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //const [gender, setGender] = useState("");
 
   function handlereq(event) {
     console.log("Qaseem");
@@ -44,7 +42,7 @@ function Login() {
         })
         .then(function (response) {
           console.log(response);
-          window.localStorage.setItem('email',email);
+          window.localStorage.setItem('email', email);
           // alert("Successfully Login");
           window.location.replace("/");
         })
@@ -67,105 +65,121 @@ function Login() {
         <Content
           className="site-layout"
           style={{
-            padding: "0 50px",
+            padding: "0 10vw",
             marginTop: "64px",
             backgroundImage: `url(${bg})`,
             backgroundSize: "cover",
-            height: "700px",
           }}
         >
-          <div style={{ margin: "16px 0" }}></div>
-          <div className="site-layout-background" style={{ padding: "24px" }}>
-            <div style={{ textAlign: "center" }}>
-              <Title style={{ color: txtColor, marginTop: "100px" }}>
-                Login
-              </Title>
-            </div>
-          </div>
-          <div>
-            <Form
-              name="normal_login"
-              className="login-form"
-              initialValues={{
-                remember: true,
-              }}
-              onFinish={onFinish}
-            >
-              <Form.Item
-                name="email"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your Username!",
-                  },
-                ]}
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              >
-                <Input
-                  prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder="Username"
-                />
-              </Form.Item>
-              <Form.Item
-                name="password"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your Password!",
-                  },
-                ]}
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              >
-                <Input
-                  prefix={<LockOutlined className="site-form-item-icon" />}
-                  type="password"
-                  placeholder="Password"
-                />
-              </Form.Item>
-              <Form.Item>
-                <Form.Item name="remember" valuePropName="checked" noStyle>
-                  <Checkbox
-                    style={{
-                      color: "white",
+          <div style={{ margin: "6px 0" }}></div>
+          <div className="site-layout-background" style={{ padding: "0 12vw", minHeight: "80vh" }}>
+            <Card style={{ backgroundColor: footerBgColor, marginTop: "16vh" }} size="small" bordered={true} hoverable={true}>
+              <Row gutter={[10, 20]}>
+                <Col span={24}>
+                  <Title style={{ color: txtColor, marginTop: "2vh", textAlign: "center" }}>
+                    Login
+                  </Title>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col span={24} >
+                  <Form
+                    name="normal_login"
+                    initialValues={{
+                      remember: true,
                     }}
+                    onFinish={onFinish}
                   >
-                    Remember me
-                  </Checkbox>
-                </Form.Item>
+                    <Row><Col span={24}>
+                      <Form.Item
+                        style={{ marginLeft: "10px", marginRight: "10px" }}
+                        name="email"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please input your Username!",
+                          },
+                        ]}
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
+                      >
+                        <Input
+                          prefix={<UserOutlined className="site-form-item-icon" />}
+                          placeholder="Username"
+                        />
+                      </Form.Item>
+                    </Col></Row>
+                    <Row><Col span={24}>
+                      <Form.Item
+                        style={{ marginLeft: "10px", marginRight: "10px" }}
+                        name="password"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please input your Password!",
+                          },
+                        ]}
+                        value={password}
+                        onChange={(e) => {
+                          setPassword(e.target.value);
+                        }}
+                      >
+                        <Input
+                          prefix={<LockOutlined className="site-form-item-icon" />}
+                          type="password"
+                          placeholder="Password"
+                        />
+                      </Form.Item>
+                    </Col></Row>
+                    <Form.Item style={{ marginLeft: "10px", marginRight: "10px" }}>
+                      <Form.Item name="remember" valuePropName="checked" noStyle>
 
-                {/* <a className="login-form-forgot" href="">
-          Forgot password
-        </a> */}
-              </Form.Item>
+                        <Checkbox
+                          style={{
+                            color: "white",
+                          }}
+                        >
+                          Remember me
+                        </Checkbox>
+                      </Form.Item>
+                    </Form.Item>
+                    <Row><Col span={24}>
+                      <Form.Item style={{ marginLeft: "10px", marginRight: "10px" }}>
+                        <Row gutter={[6, 1]}>
+                          <Col span={12} style={{ textAlign: "center" }}>
+                            <Button
+                              type="primary"
+                              htmlType="submit"
+                              onClick={handlereq}
+                              style={{ color: "black", width: "100%" }}
+                            >
+                              Log in
+                            </Button>
+                          </Col>
+                          <Col span={12} style={{ textAlign: "center" }}>
+                            <Button
+                              href="./signup"
+                              type="primary"
+                              htmlType="submit"
+                              style={{ color: "black", width: "100%" }}
+                            >
 
-              <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="login-form-button"
-                  onClick={handlereq}
-                >
-                  Log in
-                </Button>
-                <Button
-                  href="./signup"
-                  type="primary"
-                  htmlType="submit"
-                  className="Signup-button"
-                >
-                  Register
-                </Button>
-                {/* <a style={{marginLeft:'300px'}} href="src\pages\Signup.js">register now!</a> */}
-              </Form.Item>
-            </Form>
+                              Register
+                            </Button>
+                          </Col>
+                        </Row>
+                      </Form.Item>
+                    </Col></Row>
+                  </Form>
+                </Col>
+              </Row>
+            </Card>
           </div>
         </Content>
+
         <Footer
           style={{
             textAlign: "center",

@@ -46,20 +46,21 @@ function NavBar(props) {
         <Menu.Item key="3" onClick={() => onClickNav(3)}>
           About
         </Menu.Item>
-        {email ?
-          <Menu.Item
-            key="6" 
-            onClick={() => onClickNav(6)}
-          >
-            Logout
-          </Menu.Item>
-            : null} 
+         
           <Menu.Item
             key="4"
             onClick={() => onClickNav(4)}
           >
             Login
           </Menu.Item>
+          {email ?
+          <Menu.Item
+            key="6" 
+            onClick={() => onClickNav(6)}
+          >
+            Logout
+          </Menu.Item>
+            : null}
         {email ? null : (
           <Menu.Item key="5" onClick={() => onClickNav(5)}>
             Signup
