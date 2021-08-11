@@ -47,21 +47,22 @@ function NavBar(props) {
           About
         </Menu.Item>
          
-          <Menu.Item
-            key="4"
-            onClick={() => onClickNav(4)}
-          >
-            Login
-          </Menu.Item>
+          
           {email ?
           <Menu.Item
             key="6" 
             onClick={() => onClickNav(6)}
+            style={{color:"#ce2029",fontWeight:"bolder"}}
           >
             Logout
           </Menu.Item>
-            : null}
-        {email ? null : (
+            : <Menu.Item
+            key="4"
+            onClick={() => onClickNav(4)}
+          >
+            Login
+          </Menu.Item>}
+        {email ? (null) : (
           <Menu.Item key="5" onClick={() => onClickNav(5)}>
             Signup
           </Menu.Item>
