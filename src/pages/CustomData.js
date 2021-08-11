@@ -162,7 +162,7 @@ const dataSource = [
       }),
     };
     const response = await fetch(
-      "http://localhost:8000/csvupload",
+      "https://crimemodel.herokuapp.com/csvupload",
       requestOptions
     );
     console.log(response)
