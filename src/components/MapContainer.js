@@ -15,8 +15,6 @@ export class MapContainer extends Component {
   constructor(props) {
     super(props);
 
-    // demo data
-
     this.state = {
       lat: 24.860966,
       lng: 66.990501,
@@ -88,9 +86,7 @@ export class MapContainer extends Component {
       this.state.showingInfoWindow = true
       this.state.marker = marker
     }
-    // console.log(this.props)
     const zoomno = 15
-    // console.log(this.state) 
     var bounds = new this.props.google.maps.LatLngBounds();
     for (var i = 0; i < points.length; i++) {
       if (this.props.searchedCity === points[i].name) {
@@ -98,9 +94,6 @@ export class MapContainer extends Component {
         this.state = points[i]
       }
     }
-
-    //  console.log((Math.trunc(point.pre) * 100))
-    // console.log(points)
     return (
 
       <div style={{ position: "relative", height: "60vh" }}>
@@ -119,12 +112,10 @@ export class MapContainer extends Component {
         >
           {
 
-            this.state.points.map((point) =>
-              // <div>
+            this.state.points.map((point, index) =>
               <Circle
+                key={index}
                 name={point.name}
-                // Math.trunc(point.pre * 100)
-                // Math.trunc(parseInt(point.pre.replace('.','')))  
                 radius={(Math.trunc(point.pre.replace('.', '').slice(0, 4)))}
                 center={{ lat: point.lat, lng: point.lng }}
                 onMouseover={() => console.log('mouseover')}
@@ -136,21 +127,18 @@ export class MapContainer extends Component {
                 fillColor='#FF0000'
                 fillOpacity={0.2}
               />
-              //  </div>
-
             )
           }
-          {this.state.points.map((point) =>
+          {this.state.points.map((point, index) =>
 
             <Marker
+              key={index}
               title={point.name}
               name={point.name}
               position={{ lat: point.lat, lng: point.lng }} >
             </Marker>
           )
           }
-
-
         </Map>
       </div>
     );
