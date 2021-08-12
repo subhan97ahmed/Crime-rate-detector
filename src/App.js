@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { Layout, Input, Typography, Row, Col, Select, Button, message } from "antd";
 import MapContainer from "./components/MapContainer";
 import NavBar from "./components/NavBar";
@@ -10,7 +9,6 @@ import "./App.less";
 
 const { Title } = Typography;
 const { Header, Content, Footer } = Layout;
-const { Search } = Input;
 const { Option } = Select;
 
 const txtColor = conColors.txtColor;
@@ -24,20 +22,12 @@ function App() {
   const [year, setyear] = useState('')
   const [month, setmonth] = useState('Month')
   const [crimeType, setcrimeType] = useState('Crime Type')
-  const history = useHistory();
   const email = localStorage.getItem("email");
 
-  const onSearch = (value) => {
-    // if(value!==searched){
-    {
-      email ? setsearchedCity(value) :
-        window.location.replace("./login");
-
-    }
-    // }
-  };
+  
   const OnClickPredict = async () => {
-    if (Number(year) >= 1800 && Number(year) <= 3000 && month !== 'Month' && crimeType !== 'Crime Type') {
+    if(email)
+    {if (Number(year) >= 1800 && Number(year) <= 3000 && month !== 'Month' && crimeType !== 'Crime Type') {
       const requestOptions = {
         method: "POST",
         headers: {
@@ -50,10 +40,11 @@ function App() {
           crimeType: Number(crimeType),
         }),
       };
+      message.loading('Calculating Predictions',2)
       const response = await fetch(
         "https://crimemodel.herokuapp.com/predicts",
         requestOptions
-      );
+      )
       const data = await response.json();
       setpredictionData({
         year: data.year,
@@ -66,10 +57,12 @@ function App() {
         central_prediction: data.central_prediction,
         malir_prediction: data.malir_prediction,
       });
-      console.log(predictionData);
     }
     else {
       message.error("Please make sure you fill all the fields and year is between 1800 and 3000")
+    }}
+    else{
+      window.location.replace('./login')
     }
   };
 
@@ -100,18 +93,14 @@ function App() {
               <Col span={24}>
                 <Row gutter={[5, 7]}>
                   <Col span={24}>
-                    <Search
-                      placeholder="Enter Area to find Crime Rate"
-                      theme="light"
-                      onSearch={onSearch}
-                      enterButton
-                      size="large"
+                    <Title
+                      level={2}
                       style={{
-                        width: "65%",
-                        margin: "0 auto",
-                        display: "block",
+                        color:txtColor
                       }}
-                    />
+                    >
+                    Enter Data to Predict crimes of Karachi 
+                    </Title>
                   </Col>
                 </Row>
                 <Row gutter={[10, 10]} style={{ marginTop: "20px" }}>
@@ -216,28 +205,28 @@ function App() {
                     <Col xs={4} lg={5}><p>{month}</p></Col>
                     <Col xs={4} lg={5}><p>South</p></Col>
                     <Col xs={4} lg={5}><p>{crimeType}</p></Col>
-                    <Col xs={4} lg={4}><p>{(predictionData.south_prediction || '').replace(/[\[\]']+/g, '')}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.south_prediction || '').replace(/[\[\]']+/g, '').substring(0, (predictionData.south_prediction || '').indexOf('.') - 1)}</p></Col>
                   </Row>
                   <Row gutter={20}>
                     <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>
                     <Col xs={4} lg={5}><p>{month}</p></Col>
                     <Col xs={4} lg={5}><p>West</p></Col>
                     <Col xs={4} lg={5}><p>{crimeType}</p></Col>
-                    <Col xs={4} lg={4}><p>{(predictionData.west_prediction || '').replace(/[\[\]']+/g, '')}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.west_prediction || '').replace(/[\[\]']+/g, '').substring(0, (predictionData.west_prediction || '').indexOf('.') - 1)}</p></Col>
                   </Row>
                   <Row gutter={20}>
                     <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>
                     <Col xs={4} lg={5}><p>{month}</p></Col>
                     <Col xs={4} lg={5}><p>Central</p></Col>
                     <Col xs={4} lg={5}><p>{crimeType}</p></Col>
-                    <Col xs={4} lg={4}><p>{(predictionData.central_prediction || '').replace(/[\[\]']+/g, '')}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.central_prediction || '').replace(/[\[\]']+/g, '').substring(0, (predictionData.central_prediction || '').indexOf('.') - 1)}</p></Col>
                   </Row>
                   <Row gutter={20}>
                     <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>
                     <Col xs={4} lg={5}><p>{month}</p></Col>
                     <Col xs={4} lg={5}><p>Malir</p></Col>
                     <Col xs={4} lg={5}><p>{crimeType}</p></Col>
-                    <Col xs={4} lg={4}><p>{(predictionData.malir_prediction || '').replace(/[\[\]']+/g, '')}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.malir_prediction || '').replace(/[\[\]']+/g, '').substring(0, (predictionData.malir_prediction || '').indexOf('.') - 1)}</p></Col>
                   </Row>
                   <Row gutter={20} >
                     <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>

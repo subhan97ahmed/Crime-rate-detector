@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { Layout, Typography, Form, Input, Button, Checkbox, Col, Row, Card } from "antd";
+import { Layout, Typography, Form, Input, Button, Checkbox, Col, Row, Card, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import axios from "axios";
 import NavLogo from "../components/NavLogo";
@@ -15,43 +14,34 @@ const txtColor = conColors.txtColor;
 const footerBgColor = conColors.footerBgColor;
 const footerTxtColor = conColors.footerTxtColor;
 const onFinish = (values) => {
-  console.log("Received values of form: ", values);
+
 };
 function Login() {
-  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function handlereq(event) {
-    console.log("Qaseem");
-    console.log(email, password);
-    //localStorage.setItem("email", email);
     event.preventDefault();
 
     if (
       email.trim() !== "" &&
       password.trim() !== ""
-      //gender.trim() !== ""
     ) {
-      // http://localhost:4001/api/auth
+      message.loading('Signing in')
       axios
         .post("https://crime-backend.herokuapp.com/api/auth", {
           email: email,
           password: password,
-          //gender: gender,
         })
         .then(function (response) {
-          console.log(response);
           window.localStorage.setItem('email', email);
-          // alert("Successfully Login");
           window.location.replace("/");
         })
         .catch(function (error) {
-          console.log(error);
-          alert("Invalid email or password");
+          message.error("Invalid email or password");
         });
     } else {
-      alert("Please fill form completely");
+      message.warn("Please fill form completely");
     }
   }
 
@@ -98,7 +88,7 @@ function Login() {
                         rules={[
                           {
                             required: true,
-                            message: "Please input your Username!",
+                            message: "Please enter your Email",
                           },
                         ]}
                         value={email}
@@ -108,7 +98,7 @@ function Login() {
                       >
                         <Input
                           prefix={<UserOutlined className="site-form-item-icon" />}
-                          placeholder="Username"
+                          placeholder="Email"
                         />
                       </Form.Item>
                     </Col></Row>

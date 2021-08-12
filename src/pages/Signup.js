@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import "../App.less";
-import bg from "../bg.jpg";
-import NavBar from "../components/NavBar";
-import { Layout, Typography, Image } from "antd";
-import * as conColors from "../colors";
-import NavLogo from "../components/NavLogo";
-import { Form, Input, Select, Checkbox, Button } from "antd";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { Form, Input, Select, Button, Layout, Typography,message } from "antd";
+import axios from "axios";
+import NavBar from "../components/NavBar";
+import NavLogo from "../components/NavLogo";
+import bg from "../bg.jpg";
+import * as conColors from "../colors";
+import "../App.less";
 
 const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
@@ -53,7 +52,6 @@ const RegistrationForm = () => {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
   };
 
   const prefixSelector = (
@@ -68,60 +66,37 @@ const RegistrationForm = () => {
       </Select>
     </Form.Item>
   );
-  //   const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-
-  //   const onWebsiteChange = (value) => {
-  //     if (!value) {
-  //       setAutoCompleteResult([]);
-  //     } else {
-  //       setAutoCompleteResult(
-  //         [".com", ".org", ".net"].map((domain) => `${value}${domain}`)
-  //       );
-  //     }
-  //   };
-
-  //   const websiteOptions = autoCompleteResult.map((website) => ({
-  //     label: website,
-  //     value: website,
-  //   }));
 };
 function Signup() {
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //const [gender, setGender] = useState("");
   function handlereq(event) {
-    console.log("Qaseem");
-    console.log(username, email, password);
+    
     event.preventDefault();
 
-    console.log(username);
     if (
       username.trim() !== "" &&
       email.trim() !== "" &&
       password.trim() !== ""
-      //gender.trim() !== ""
     ) {
-      // "http://localhost:4001/api/users"
       axios
         .post("https://crime-backend.herokuapp.com/api/users", {
           username: username,
           email: email,
           password: password,
-          //gender: gender,
         })
         .then(function (response) {
-          console.log(response);
 
-          alert("Successfully Signup");
+          message.success("Successfully Signup");
           history.push("/login");
         })
         .catch(function (error) {
-          console.log(error);
+          message.error('signup failed');
         });
     } else {
-      alert("Please fill form completely");
+      message.warn("Please fill form completely");
     }
   }
   return (
@@ -237,7 +212,7 @@ function Signup() {
                 }}
                 hasFeedback
               >
-                <Input.Password placeholder="Entre your password" />
+                <Input.Password placeholder="Password" />
               </Form.Item>
 
               {/* <Form.Item
@@ -377,7 +352,7 @@ function Signup() {
                 </a>
               </Form.Item>
               <Form.Item>
-                <Button type="primary" htmlType="submit" onClick={handlereq}>
+                <Button type="primary" htmlType="submit" onClick={handlereq} style={{ color: "black" }}>
                   Register
                 </Button>
               </Form.Item>

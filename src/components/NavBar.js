@@ -44,7 +44,7 @@ function NavBar(props) {
           </Menu.Item>
           : null}
         <Menu.Item key="3" onClick={() => onClickNav(3)}>
-          About
+          About Us
         </Menu.Item>
          
           

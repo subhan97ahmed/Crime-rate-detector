@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import { Map, GoogleApiWrapper, Marker, Circle, InfoWindow } from 'google-maps-react';
+import React, { Component } from 'react';
+import { Map, GoogleApiWrapper, Marker, Circle } from 'google-maps-react';
 import { Spin } from 'antd';
 
 const mapStyles = {
@@ -71,21 +71,9 @@ export class MapContainer extends Component {
     }
   }
 
-  onMarkerClick = (props) => {
-    this.setState({
-      lat: 24.860966,
-      lng: 66.990501,
-      showingInfoWindow: true
-    });
-  };
-
 
   render() {
 
-    const handleMarkerClick = (props, marker, e) => {
-      this.state.showingInfoWindow = true
-      this.state.marker = marker
-    }
     const zoomno = 15
     var bounds = new this.props.google.maps.LatLngBounds();
     for (var i = 0; i < points.length; i++) {

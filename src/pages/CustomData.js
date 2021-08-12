@@ -84,16 +84,12 @@ function CustomData() {
   const [uploaded, setuploaded] = useState(false)
   function onChange(info) {
     if (info.file.status !== "uploading") {
-      console.log(info.file, info.fileList);
 
       var file_type = info.file.type
 
       var file_size = info.file.size
 
       if (file_type === "application/vnd.ms-excel") {
-
-        console.log("CSV file")
-        console.log(info)
         Papa.parse(info.file.originFileObj,
           {
             delimiter: "",	// auto-detect
@@ -136,9 +132,6 @@ function CustomData() {
   }
   const handlecsvupload = async (results) => {
 
-    console.log("Finished:", JSON.stringify({
-      data: results.data,
-    }));
     const requestOptions = {
       method: "POST",
       headers: {
@@ -153,7 +146,7 @@ function CustomData() {
       "https://crimemodel.herokuapp.com/csvupload",
       requestOptions
     ).then(
-      // console.log(response)
+
     ).catch(
       updateUI
     );
@@ -190,7 +183,6 @@ function CustomData() {
         central_prediction: data.central_prediction,
         malir_prediction: data.malir_prediction,
       });
-      console.log(predictionData);
     }
     else {
       message.error("Please make sure you fill all the fields and year is between 1800 and 3000")
