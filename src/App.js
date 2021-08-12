@@ -197,6 +197,59 @@ function App() {
                 <MapContainer searchedCity={searchedCity} predictionData={predictionData} />
               </Col>
             </Row>
+
+            {
+              predictionData === null ? (null) : (
+                <div style={{ marginTop: "10px" }}>
+                  <Row gutter={20} style={{textAlign:"center"}}>
+                    <Col span={24}><h1>Predictions</h1></Col>
+                  </Row>
+                  <Row gutter={20}>
+                    <Col xs={3} lg={5}><h3>Year</h3></Col>
+                    <Col xs={4} lg={5}><h3>Month</h3></Col>
+                    <Col xs={4} lg={5}><h3>District</h3></Col>
+                    <Col xs={5} lg={5}><h3>Type</h3></Col>
+                    <Col xs={5} lg={4}><h3>Predicted Numbers</h3></Col>
+                  </Row>
+                  <Row gutter={20}>
+                    <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>
+                    <Col xs={4} lg={5}><p>{month}</p></Col>
+                    <Col xs={4} lg={5}><p>South</p></Col>
+                    <Col xs={4} lg={5}><p>{crimeType}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.south_prediction || '').replace(/[\[\]']+/g, '')}</p></Col>
+                  </Row>
+                  <Row gutter={20}>
+                    <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>
+                    <Col xs={4} lg={5}><p>{month}</p></Col>
+                    <Col xs={4} lg={5}><p>West</p></Col>
+                    <Col xs={4} lg={5}><p>{crimeType}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.west_prediction || '').replace(/[\[\]']+/g, '')}</p></Col>
+                  </Row>
+                  <Row gutter={20}>
+                    <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>
+                    <Col xs={4} lg={5}><p>{month}</p></Col>
+                    <Col xs={4} lg={5}><p>Central</p></Col>
+                    <Col xs={4} lg={5}><p>{crimeType}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.central_prediction || '').replace(/[\[\]']+/g, '')}</p></Col>
+                  </Row>
+                  <Row gutter={20}>
+                    <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>
+                    <Col xs={4} lg={5}><p>{month}</p></Col>
+                    <Col xs={4} lg={5}><p>Malir</p></Col>
+                    <Col xs={4} lg={5}><p>{crimeType}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.malir_prediction || '').replace(/[\[\]']+/g, '')}</p></Col>
+                  </Row>
+                  <Row gutter={20} >
+                    <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>
+                    <Col xs={4} lg={5}><p>{month}</p></Col>
+                    <Col xs={4} lg={5}><p>East</p></Col>
+                    <Col xs={4} lg={5}><p>{crimeType}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.east_prediction || '').replace(/[\[\]']+/g, '').substring(0, (predictionData.east_prediction || '').indexOf('.') - 1)}</p></Col>
+                  </Row>
+
+                </div>
+              )
+            }
           </div>
         </Content>
         <Footer

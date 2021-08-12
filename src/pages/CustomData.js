@@ -337,12 +337,15 @@ function CustomData() {
             {
               predictionData === null ? (null) : (
                 <div style={{ marginTop: "10px" }}>
+                  <Row gutter={20} style={{textAlign:"center"}}>
+                    <Col span={24}><h1>Predictions On Your data</h1></Col>
+                  </Row>
                   <Row gutter={20}>
                     <Col xs={3} lg={5}><h3>Year</h3></Col>
                     <Col xs={4} lg={5}><h3>Month</h3></Col>
                     <Col xs={4} lg={5}><h3>District</h3></Col>
                     <Col xs={5} lg={5}><h3>Type</h3></Col>
-                    <Col xs={5} lg={4}><h3>Reported Numbers</h3></Col>
+                    <Col xs={5} lg={4}><h3>Predicted Numbers</h3></Col>
                   </Row>
                   <Row gutter={20}>
                     <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>
