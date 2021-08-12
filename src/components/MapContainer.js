@@ -16,21 +16,21 @@ export class MapContainer extends Component {
     super(props);
 
     // demo data
-    
+
     this.state = {
       lat: 24.860966,
       lng: 66.990501,
       showingInfoWindow: false,
       marker: null,
-      points:[]
+      points: []
     };
   }
 
-  componentDidUpdate(prevProps){
+  componentDidUpdate(prevProps) {
 
-    if (this.props.predictionData?.south_prediction!== prevProps.predictionData?.south_prediction) {
-      
-   const  points = [
+    if (this.props.predictionData?.south_prediction !== prevProps.predictionData?.south_prediction) {
+
+      const points = [
         {
           name: 'south',
           lat: 24.8605,
@@ -62,7 +62,7 @@ export class MapContainer extends Component {
           name: 'malir',
           lat: 25.0960
           , lng: 67.1871,
-          pre: ((this.props.predictionData?.malir_prediction) || '').replace(/[\[\]']+/g, '') 
+          pre: ((this.props.predictionData?.malir_prediction) || '').replace(/[\[\]']+/g, '')
         }
       ]
       this.setState(
@@ -99,11 +99,6 @@ export class MapContainer extends Component {
       }
     }
 
-    // console.log(points[0].pre)
-    // let q= 
-    // console.log(q) 
-    // console.log( typeof this.props.predictionData.south_prediction)
-
     //  console.log((Math.trunc(point.pre) * 100))
     // console.log(points)
     return (
@@ -116,12 +111,8 @@ export class MapContainer extends Component {
           initialCenter=
           {
             {
-              // this.  state
-              // lat: 24.860966,
-              // lng: 66.990501
               lat: this.state.lat,
               lng: this.state.lng
-// hello
             }
           }
 
@@ -134,7 +125,7 @@ export class MapContainer extends Component {
                 name={point.name}
                 // Math.trunc(point.pre * 100)
                 // Math.trunc(parseInt(point.pre.replace('.','')))  
-                radius={(Math.trunc(point.pre.replace('.','').slice(0,4)))}
+                radius={(Math.trunc(point.pre.replace('.', '').slice(0, 4)))}
                 center={{ lat: point.lat, lng: point.lng }}
                 onMouseover={() => console.log('mouseover')}
                 onClick={() => console.log('click')}

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Layout, Input, Typography, Row, Col, Select, Button } from "antd";
+import { useHistory } from "react-router-dom";
+import { Layout, Input, Typography, Row, Col, Select, Button, message } from "antd";
 import MapContainer from "./components/MapContainer";
 import NavBar from "./components/NavBar";
 import NavLogo from "./components/NavLogo";
-import * as conColors from "./colors";
 import bg from "./bg.jpg";
+import * as conColors from "./colors";
 import "./App.less";
-import { useHistory } from "react-router-dom";
 
 const { Title } = Typography;
 const { Header, Content, Footer } = Layout;
@@ -17,7 +17,6 @@ const txtColor = conColors.txtColor;
 const footerBgColor = conColors.footerBgColor;
 const footerTxtColor = conColors.footerTxtColor;
 
-// let searched=''
 function App() {
 
   const [searchedCity, setsearchedCity] = useState('')
@@ -38,10 +37,7 @@ function App() {
     // }
   };
   const OnClickPredict = async () => {
-    // console.log(year)
-    // console.log(month)
-    // console.log(crimeType)
-    if (Number(year) >= 1800 && month !== 'Month' && crimeType !== 'Crime Type') {
+    if (Number(year) >= 1800 && Number(year) <= 3000 && month !== 'Month' && crimeType !== 'Crime Type') {
       const requestOptions = {
         method: "POST",
         headers: {
@@ -73,10 +69,10 @@ function App() {
       console.log(predictionData);
     }
     else {
-      alert('fill all the text fields')
+      message.error("Please make sure you fill all the fields and year is between 1800 and 3000")
     }
   };
-  
+
   return (
     <div className="App">
       <Layout>
