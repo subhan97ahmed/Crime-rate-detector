@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Form, Input, Select, Button, Layout, Typography,message } from "antd";
+import { Form, Input, Select, Button, Layout, Typography, message, Card } from "antd";
 import axios from "axios";
 import NavBar from "../components/NavBar";
 import NavLogo from "../components/NavLogo";
@@ -73,7 +73,7 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   function handlereq(event) {
-    
+
     event.preventDefault();
 
     if (
@@ -109,255 +109,111 @@ function Signup() {
         <Content
           className="site-layout"
           style={{
-            padding: "0 50px",
-            marginTop: "30px",
+            padding: "0 10vw",
+            marginTop: "64px",
             backgroundImage: `url(${bg})`,
             backgroundSize: "cover",
             height: "700px",
           }}
         >
           <div style={{ margin: "16px 0" }}></div>
-          <div className="site-layout-background" style={{ padding: "24px" }}>
-            <div style={{ textAlign: "center" }}>
-              <Title style={{ color: txtColor, marginTop: "100px" }}>
-                Signup
-              </Title>
-            </div>
-          </div>
-          <div>
-            <Form
-              className="signup-form"
-              {...formItemLayout}
-              //   form={form}
-              name="register"
-              //   onFinish={onFinish}
-              initialValues={{
-                residence: ["zhejiang", "hangzhou", "xihu"],
-                prefix: "86",
-              }}
-              scrollToFirstError
-            >
-              <Form.Item
-                name="username"
-                // label="Username"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your Username!",
-                  },
-                ]}
-                value={username}
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                }}
-              >
-                <Input placeholder="Username" />
-              </Form.Item>
-              <Form.Item
-                name="email"
-                // label="E-mail"
-                color="white"
-                rules={[
-                  {
-                    type: "email",
-                    message: "The input is not valid E-mail!",
-                  },
-                  {
-                    required: true,
-                    message: "Please input your E-mail!",
-                  },
-                ]}
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              >
-                <Input placeholder="E-mail!" />
-              </Form.Item>
+          <div className="site-layout-background" style={{ padding: "0 12vw", minHeight: "80vh" }}>
+            <Card style={{ backgroundColor: footerBgColor, marginTop: "16vh" }} size="small" bordered={true} hoverable={true}>
+              <div style={{ textAlign: "center" }}>
+                <Title style={{ color: txtColor }}>
+                  Signup
+                </Title>
+              </div>
+              <div style={{ textAlign: "center" }}>
 
-              {/* <Form.Item
-                name="gender"
-                // label="Gender"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please select gender!",
-                  },
-                ]}
-              >
-                <Select placeholder="Select your gender">
-                  <Option value="Male">Male</Option>
-                  <Option value="Female">Female</Option>
-                  <Option value="Other">Other</Option>
-                </Select>
-                value={gender}
-                onChange=
-                {(e) => {
-                  setGender(e.target.value);
-                }}
-              </Form.Item> */}
-
-              <Form.Item
-                name="Password"
-                // label="Password"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your password!",
-                  },
-                ]}
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                hasFeedback
-              >
-                <Input.Password placeholder="Password" />
-              </Form.Item>
-
-              {/* <Form.Item
-                name="Confirm"
-                // label="Confirm password"
-                dependencies={["password"]}
-                hasFeedback
-                rules={[
-                  {
-                    required: true,
-                    message: "Please confirm your password!",
-                  },
-                  ({ getFieldValue }) => ({
-                    validator(_, value) {
-                      if (!value || getFieldValue("password") === value) {
-                        return Promise.resolve();
-                      }
-
-                      return Promise.reject(
-                        new Error(
-                          "The two passwords that you entered do not match!"
-                        )
-                      );
-                    },
-                  }),
-                ]}
-              >
-                <Input.Password placeholder="Confirm your password" />
-              </Form.Item> */}
-
-              {/* <Form.Item
-                name="nickname"
-                label="Nickname"
-                tooltip="What do you want others to call you?"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your nickname!",
-                    whitespace: true,
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
-
-              <Form.Item
-                name="residence"
-                label="Habitual Residence"
-                rules={[
-                  {
-                    type: "array",
-                    required: true,
-                    message: "Please select your habitual residence!",
-                  },
-                ]}
-              >
-                <Cascader options={residences} />
-              </Form.Item>
-
-              <Form.Item
-                name="phone"
-                label="Phone Number"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your phone number!",
-                  },
-                ]}
-              >
-                <Input
-                  //   addonBefore={prefixSelector}
-                  style={{
-                    width: "100%",
+                <Form
+                  className="signup-form"
+                  {...formItemLayout}
+                  name="register"
+                  initialValues={{
+                    residence: ["zhejiang", "hangzhou", "xihu"],
+                    prefix: "86",
                   }}
-                />
-              </Form.Item>
-
-              <Form.Item
-                name="website"
-                label="Website"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input website!",
-                  },
-                ]}
-              >
-                <AutoComplete
-                  //   options={websiteOptions}
-                  //   onChange={onWebsiteChange}
-                  placeholder="website"
+                  scrollToFirstError
                 >
-                  <Input />
-                </AutoComplete>
-              </Form.Item> */}
-
-              {/* <Form.Item
-                label="Captcha"
-                extra="We must make sure that your are a human."
-              >
-                <Row gutter={8}>
-                  <Col span={12}>
-                    <Form.Item
-                      name="captcha"
-                      noStyle
-                      rules={[
-                        {
-                          required: true,
-                          message: "Please input the captcha you got!",
-                        },
-                      ]}
-                    >
-                      <Input />
-                    </Form.Item>
-                  </Col>
-                  <Col span={12}>
-                    <Button>Get captcha</Button>
-                  </Col>
-                </Row>
-              </Form.Item> */}
-
-              <Form.Item
-                name="agreement"
-                valuePropName="checked"
-                rules={[
-                  {
-                    validator: (_, value) =>
-                      value
-                        ? Promise.resolve()
-                        : Promise.reject(new Error("Should accept agreement")),
-                  },
-                ]}
-                {...tailFormItemLayout}
-              >
-                <a href="./login">
-                  Already have an account account ?
-                </a>
-              </Form.Item>
-              <Form.Item>
-                <Button type="primary" htmlType="submit" onClick={handlereq} style={{ color: "black" }}>
-                  Register
-                </Button>
-              </Form.Item>
-            </Form>
+                  <Form.Item
+                    name="username"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Username!",
+                      },
+                    ]}
+                    value={username}
+                    onChange={(e) => {
+                      setUsername(e.target.value);
+                    }}
+                  >
+                    <Input placeholder="Username" />
+                  </Form.Item>
+                  <Form.Item
+                    name="email"
+                    color="white"
+                    rules={[
+                      {
+                        type: "email",
+                        message: "The input is not valid E-mail!",
+                      },
+                      {
+                        required: true,
+                        message: "Please input your E-mail!",
+                      },
+                    ]}
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  >
+                    <Input placeholder="E-mail!" />
+                  </Form.Item>
+                  <Form.Item
+                    name="Password"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your password!",
+                      },
+                    ]}
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                    hasFeedback
+                  >
+                    <Input.Password placeholder="Password" />
+                  </Form.Item>
+                  <Form.Item
+                    name="agreement"
+                    valuePropName="checked"
+                    rules={[
+                      {
+                        validator: (_, value) =>
+                          value
+                            ? Promise.resolve()
+                            : Promise.reject(new Error("Should accept agreement")),
+                      },
+                    ]}
+                    {...tailFormItemLayout}
+                  >
+                    <a href="./login" style={{ marginRight: "175px" }}>
+                      Already have an account account ?
+                    </a>
+                  </Form.Item>
+                  <Form.Item>
+                    <Button type="primary" htmlType="submit" onClick={handlereq} style={{ color: "black" }}>
+                      Register
+                    </Button>
+                  </Form.Item>
+                </Form>
+              </div>
+            </Card>
           </div>
+
         </Content>
         <Footer
           style={{
