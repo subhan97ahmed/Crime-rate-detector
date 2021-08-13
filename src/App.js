@@ -205,35 +205,35 @@ function App() {
                     <Col xs={4} lg={5}><p>{month}</p></Col>
                     <Col xs={4} lg={5}><p>South</p></Col>
                     <Col xs={4} lg={5}><p>{crimeType}</p></Col>
-                    <Col xs={4} lg={4}><p>{(predictionData.south_prediction || '').replace(/[\[\]']+/g, '').substring(0, (predictionData.south_prediction || '').indexOf('.') - 1)}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.south_prediction || '').replace(/[\[\]']+/g, '')}</p></Col>
                   </Row>
                   <Row gutter={20}>
                     <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>
                     <Col xs={4} lg={5}><p>{month}</p></Col>
                     <Col xs={4} lg={5}><p>West</p></Col>
                     <Col xs={4} lg={5}><p>{crimeType}</p></Col>
-                    <Col xs={4} lg={4}><p>{(predictionData.west_prediction || '').replace(/[\[\]']+/g, '').substring(0, (predictionData.west_prediction || '').indexOf('.') - 1)}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.west_prediction || '').replace(/[\[\]']+/g, '')}</p></Col>
                   </Row>
                   <Row gutter={20}>
                     <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>
                     <Col xs={4} lg={5}><p>{month}</p></Col>
                     <Col xs={4} lg={5}><p>Central</p></Col>
                     <Col xs={4} lg={5}><p>{crimeType}</p></Col>
-                    <Col xs={4} lg={4}><p>{(predictionData.central_prediction || '').replace(/[\[\]']+/g, '').substring(0, (predictionData.central_prediction || '').indexOf('.') - 1)}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.central_prediction || '').replace(/[\[\]']+/g, '')}</p></Col>
                   </Row>
                   <Row gutter={20}>
                     <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>
                     <Col xs={4} lg={5}><p>{month}</p></Col>
                     <Col xs={4} lg={5}><p>Malir</p></Col>
                     <Col xs={4} lg={5}><p>{crimeType}</p></Col>
-                    <Col xs={4} lg={4}><p>{(predictionData.malir_prediction || '').replace(/[\[\]']+/g, '').substring(0, (predictionData.malir_prediction || '').indexOf('.') - 1)}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.malir_prediction || '').replace(/[\[\]']+/g, '')}</p></Col>
                   </Row>
                   <Row gutter={20} >
                     <Col xs={4} lg={5}><p>{year.substring(0, 4)}</p></Col>
                     <Col xs={4} lg={5}><p>{month}</p></Col>
                     <Col xs={4} lg={5}><p>East</p></Col>
                     <Col xs={4} lg={5}><p>{crimeType}</p></Col>
-                    <Col xs={4} lg={4}><p>{(predictionData.east_prediction || '').replace(/[\[\]']+/g, '').substring(0, (predictionData.east_prediction || '').indexOf('.') - 1)}</p></Col>
+                    <Col xs={4} lg={4}><p>{(predictionData.east_prediction || '').replace(/[\[\]']+/g, '')}</p></Col>
                   </Row>
 
                 </div>
